@@ -1,0 +1,8 @@
+Math.floor(0.34);
+O/P:0
+
+Math.ceil(0.54);
+O/P:1;
+
+Math.round(0.54);
+O/P :1;

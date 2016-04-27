@@ -1,0 +1,83 @@
+ADDING STYLES:
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+         <h1>Welcome to my DOM demo</h1>
+          <p id="first">Golden retrievers are super adorable</p>
+           <br/>
+           <img src="C:/Users/akash/Pictures/golden.jpg" width="200"
+              height="200">
+
+            <img src="C:/Users/akash/Pictures/golden1.jpg" width="300"height="200">  
+
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+SCRIPT:
+var h1=document.querySelector("h1");
+//lets you add a class to that element and define its style in css
+//h1.setAttribute("class","first");
+//alternate method to add a class
+h1.classList.add("first");
+
+//remove a class
+h1.classList.remove("first");
+
+//toggle-if the element has that class name then it 
+ // removes it otherwise adds it
+ h1.classList.toggle("first");
+
+
+
+CSS:
+ *{
+ 	margin: 0;
+ }
+  .first{
+  	border: 1px solid black;
+  	background-color: #f9f9f9;
+  }
+
+
+DIFFERENCE BETWEEN INNER HTML AND TEXTCONTENT:
+var tag=document.querySelector("p");
+//text content changes the structure of the paragraph(i.e overwrites)
+ //the <strong> tag
+console.log(tag.textContent);
+
+ //innerHTML preserves the structure(i.e. prints the tags as well)
+ var k=document.querySelector("p");
+ console.log(k.innerHTML);
+
+OUTPUT:
+Golden retrievers are super adorable
+
+Golden retrievers are <strong>super</strong> adorable
+
+
+SET AND GET ATTRIBUTE:
+var tag=document.getElementsByTagName("img")[0];
+//gives the src attribute of img
+console.log(tag.getAttribute("src"));
+//sets the src attribute of img to a different img
+tag.setAttribute("src","C:/Users/akash/Pictures/403797.jpg");
+
+var tag=document.querySelector("a");
+tag.setAttribute("href","http://www.wwe.com");
+tag.innerHTML="link to wwe";
+
+

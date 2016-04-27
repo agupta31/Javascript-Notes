@@ -1,0 +1,41 @@
+EXAMPLE 1:
+function doMath()
+{  x=34;
+   console.log(x);
+
+}
+var x=12;
+doMath();
+OUTPUT:
+34
+
+
+EXAMPLE 2:
+function doMath()
+{  x=34;//replacing the same x that is declared outside
+   console.log(x);
+
+}
+var x=12;
+doMath();
+console.log(x);
+
+OUTPUT:
+34
+34
+
+
+EXAMPLE 3:
+function doMath()
+{  var phrase="hello boy";//not replacing the same phrase variable that is
+                            in the GEC but defining a new phrase variable.
+   console.log(phrase);
+
+}
+var phrase="hi there";
+doMath();
+console.log(phrase);
+
+OUTPUT:
+hello boy
+hi there

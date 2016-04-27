@@ -1,0 +1,40 @@
+ALL FUNCTIONS IN JAVASCRIPT GET ACCESS TO THRE THREE METHODS call(),apply(),bind().
+
+FUNCTION BORRWING:
+
+var person={
+
+	     firstname:"akash",
+	     lastname:"gupta",
+	     getFullName:function(greet){
+	     	    return greet+" "+this.firstname+" "+this.lastname;
+	     }
+}
+
+var person2={
+	    firstname:"jane",
+	    lastname:"doe"
+};
+
+console.log(person.getFullName.apply(person2,["hello"]));
+
+OUTPUT:
+hello jane doe
+
+
+
+
+FUNCTION CURRYING:PRESET A PARAMETER IN A FUNCTION
+
+function multiply(a,b){
+
+return a*b;
+}
+//presets the value of the parameter a as two
+var result=multiply.bind(this,2);
+console.log(result(3));
+console.log(result(5));
+
+OUTPUT:
+6
+10

@@ -1,0 +1,15 @@
+USE OF FOR IN:
+
+var employee={
+	firstname:"akash",
+	age:21,
+	company:"JP Morgan Chase"
+}
+ for(var i in employee)//simple for loop wont work
+ {
+ 	console.log(i+" "+employee[i]);
+ }
+OUTPUT:
+firstname:"akash",
+age:21,
+company:"JP Morgan Chase"

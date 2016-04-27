@@ -1,0 +1,126 @@
+script.js:
+
+var errorMsg=document.getElementById("error_msg");
+var num=[0,1,2,3,4,5,6,7,8,9,'-','_','@','*'];
+function validateMethods(){
+    
+      validateName();
+      validateEmail();
+           
+};
+
+
+function validateName(){
+     var x=document.querySelector("#name_1").value;
+     if(x===""){
+         errorMsg.innerHTML="name cannot be blank" +"<br/>";
+          return;
+       }
+
+     if(x.length>20)
+         errorMsg.innerHTML+="length too long" +"<br/>";
+
+      for(var i=0;i<num.length;i++)
+      {    var k=num[i];
+          if(x.indexOf(k)!==-1)
+             {
+                errorMsg.innerHTML+="can't have numbers in the name" +"<br/>";
+                break;
+             }
+      }
+     
+}
+
+function validateEmail(){
+      var em=document.querySelector("#email_1").value;
+
+      if(em===""){
+            errorMsg.innerHTML+="email cannot be blank" +"<br/>";
+            return;
+         }
+
+
+      if(em.indexOf(".")===-1 && em.indexOf("@")===-1)
+        errorMsg.innerHTML+="wrong format:missing operators" +"<br/>";
+
+      if(em.lastIndexOf('.')<em.lastIndexOf('@')) 
+            errorMsg.innerHTML+="wrong format:wrong combination of operators"+"<br/>";
+    
+}
+function validateDropBox(country){
+      var city=document.getElementById("cities");
+
+       var cityArr=[
+                   ['kolkata','chennai','bangalore','mumbai'],
+                   ['shanghai','beijing','hongkong'],
+                   ['new york','charlotte','boston','chicago'],
+                   ['petersburg','moscow','azerbejain']
+       ];
+
+        if(country>=0 && (country<=cityArr.length)){
+          city.options.length=0;
+
+
+         for(var i=0;i<cityArr[country-1].length;i++)
+         {
+             var c=new Option(cityArr[country-1][i]);
+             city.options.add(c,i);
+         }
+      }
+
+}
+
+
+
+
+
+
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+ 
+ 
+
+</head>
+
+<body>
+
+       <div id="container">
+            <form>
+             Name:<input type="text" name="Name" id="name_1"><br/><br/>
+             email: <input type="text" name="Email" id="email_1"><br/><br/>
+                 
+            </form>
+             <button id="button_1" onclick="validateMethods(name_1,email_1)">Click Here</button> 
+            <br/>
+
+             
+    <select id="countries" onchange="validateDropBox(this.options[this.selectedIndex].value)">
+                    <option value="">--select--</option>
+                    <option value="1">India</option>
+                    <option value="2">China</option>
+                    <option value="3">USA</option>
+                    <option value="4">Russia</option>
+
+             </select>
+              <select id="cities">
+                   
+                    
+             </select>
+        
+            <div id="error_msg">
+
+            </div>
+                    
+       </div>
+      
+        <script type="text/javascript" src="script.js"></script>
+
+</body>
+  
+</html>

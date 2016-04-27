@@ -1,0 +1,66 @@
+
+function b(firstname,lastname,age)
+{  
+ if(arguments.length===0)
+  console.log('missing parameters');
+
+  console.log(firstname);
+  console.log(lastname);
+  console.log(age);
+  console.log(arguments);//arguments is a array like object which stores the value of arguments passed to a function.
+    console.log(arguments[0]);
+}
+b();
+b('akash','gupta');
+b('akash','gupta',12);
+
+OUTPUT:
+missing parameters
+
+
+undefined
+
+undefined
+
+undefined
+
+ []
+ 
+
+akash
+
+gupta
+
+undefined
+
+["akash", "gupta"]
+
+
+akash
+
+gupta
+
+12
+
+ ["akash", "gupta", 12]
+akash
+
+
+
+ARGUMENTS: WHY DO WE GET UNDEFINED AND NOT ERROR WHEN WE DO NOT PASS ANY ARGUMENTS TO A FUNCTION?
+
+function greet(name,age,lang){
+    console.log(name);
+    console.log(age);
+    console.log(lang);
+}
+
+greet();
+
+OUTPUT:
+undefined
+undefined
+undefined
+
+This is becasue during hte creation phase the JS engine treats the parameters as variables and 
+reserves memory space for them wiht the value undefined.

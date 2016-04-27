@@ -1,0 +1,41 @@
+//call by value
+ var a=12;
+ var b;
+ b=a;
+ a=159;
+
+ console.log(a);
+ console.log(b);//value of b still remains the same as it points to a diff memory location
+
+
+ //call by reference
+  var x={
+    greeting:"hello"
+  }
+  var m=x;
+  x.greeting="ola";
+
+  console.log(x);
+  console.log(m);//b changes with a as b points to the same memory as a
+
+
+  
+  //equals operator sets up a new memory space
+  x={greeting:"howdy"};//what this does is that it is not mutating the object
+                      //x but its creating a new memory altogether which contains
+                      //this name -value pair .
+  console.log(x);
+  console.log(m);//m howver still points to the old memory location so it's value
+                  //does not change.
+
+OUTPUT:
+159
+ 
+12
+1
+ Object {greeting: "hola"}
+
+ Object {greeting: "hola"}
+
+ Object {greeting: "howdy"}
+ Object {greeting: "hola"}

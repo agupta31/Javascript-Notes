@@ -1,0 +1,258 @@
+HTML:
+<!doctype html>
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="rgbStyle.css"> 
+  
+
+</head>
+
+<body onload="init()">
+      <div id="container">
+      <header id="mainHeader">
+        <h3>THE GREAT</h3>
+        <h1>RGB(<span id="red">0</span>,<span id="green">0</span>,
+          <span id="blue">0</span>)</h1>
+
+         <h3>Guessing Game</h3>
+
+      </header>
+      <nav id="navBar">
+          <p id="newColor">NEW COLORS</p>
+          <p id="easy">EASY</p>
+          <p id="hard">HARD</p>
+          <p id="errorMsg"></p>
+      </nav>
+      <section id="mainSection">
+          <div id="easyDivs">
+            <div class="easyDiv1" id="easyBlock1" onclick="compareColor(0)"></div>
+            <div class="easyDiv1" id="easyBlock2" onclick="compareColor(1)"></div>
+            <div class="easyDiv1" id="easyBlock3" onclick="compareColor(2)"></div>
+          
+            <div id="hardDivs">
+
+             <div class="easyDiv1" id="easyBlock1" onclick="compareColor(3)"></div>
+            <div class="easyDiv1" id="easyBlock2" onclick="compareColor(4)"></div>
+            <div class="easyDiv1" id="easyBlock3" onclick="compareColor(5)"></div>
+            </div>
+          </div>
+        
+       
+             
+             
+
+      </section>
+      
+      </div>
+ 
+        <script type="text/javascript" src="rgb.js"></script>
+       
+</body>
+  
+</html>
+
+
+
+
+CSS:
+
+*{
+  margin: 0;
+  padding: 0;
+
+}
+#mainHeader{
+	text-align: center;
+	padding: 10px;
+	background-color: #006699;
+	color: white;
+	font-style: bold;
+}
+#navBar{
+	cursor: pointer;
+	text-align: center;
+	color:#006699;
+	font-size: 15px;
+	font-style: bold;
+
+
+}
+#navBar p{
+	 font-style: bold;
+	 display: inline;
+	 padding: 20px;
+}
+#easyDivs{
+	margin: auto;
+	width: 500px;
+	height: 500px;
+	margin: auto;
+    padding-left:40px;
+    
+
+
+}
+#mainSection{
+	border: 1px solid;
+	background-color: black;
+	height: 600px;
+
+}
+.easyDiv1{
+   border-radius:10px;
+   width: 120px;
+   height: 100px;
+   margin: 10px;
+   float: left;
+
+}
+
+#hardDivs{
+	clear:left;
+}
+
+
+
+
+SCRIPT:
+
+
+var newColor=document.querySelector("#newColor");//choosing new Colors bar
+var red=document.getElementById("red");
+var green=document.getElementById("green");
+var blue=document.getElementById("blue");
+var easyDiv=document.querySelectorAll(".easyDiv1");
+var easyClick=document.querySelector("#easy");//choosing easy bar
+var hardClick=document.querySelector("#hard");
+var header=document.getElementById("mainHeader");
+var rgbCompare;
+var self;
+var len;
+var isCorrect=false;
+var isHardDisabled=false;
+
+newColor.addEventListener("click",randomNumber);
+easyClick.addEventListener("click",divDisplay);
+easyClick.addEventListener("click",randomNumber);
+hardClick.addEventListener("click",divDisplay);
+hardClick.addEventListener("click",randomNumber);
+
+
+
+function randomNumber(){
+            
+            //finds out if the color chosen is the right one
+          if(isCorrect)
+             {
+              header.style.backgroundColor="#006699";
+              newColor.textContent="NEW COLORS";
+              document.querySelector("#errorMsg").textContent="";
+              isCorrect=false;
+             }
+
+            //finds out which option was clicked
+          
+            if(this===easyClick)
+            {
+              len=easyDiv.length/2;
+              self=easyClick;
+            }
+            else if(this===hardClick)
+            {
+               len=easyDiv.length;
+              self=hardClick;
+            }
+            else if(this===newColor)
+            {
+              if(self===easyClick)
+                 len=easyDiv.length/2;
+              else
+                 len=easyDiv.length;
+            }
+            else
+               len=easyDiv.length;
+
+            
+	red.innerHTML=(Math.floor(Math.random()*255));//sets the random number
+	green.innerHTML=(Math.floor(Math.random()*255));
+	blue.innerHTML=(Math.floor(Math.random()*255));
+     rgbCompare="rgb("+red.innerHTML+","+" "+green.innerHTML+","+" "+blue.innerHTML+")";
+    
+
+      (function(){ //assigns each div a random color
+
+          for(var i=0;i<len;i++)
+           {
+             
+              var rgb=[];
+              for(var j=0;j<3;j++){
+         	     rgb.push(Math.floor(Math.random()*255))
+                   }
+
+
+         easyDiv[i].style.backgroundColor='rgb('+ rgb.join(',') +')';
+
+          }
+          easyDiv[Math.floor(Math.random()*(len-1))].style.backgroundColor=rgbCompare;
+
+	   })();
+}
+
+
+function compareColor(id)//compares the color of the div blocks with the randome generated color
+{   
+  newColor.removeEventListener("click",randomNumber);//disabling new color button while playing
+      if(self===easyClick)//disbaling hard option when easy is chosen
+         {
+          hardClick.removeEventListener("click",divDisplay);
+          hardClick.removeEventListener("click",randomNumber);
+          isHardDisabled=true;
+
+         } 
+         else{//disabling easy option when hard is chosen
+            easyClick.removeEventListener("click",divDisplay);
+             easyClick.removeEventListener("click",randomNumber);
+           }
+     
+	var colr=easyDiv[id].style.backgroundColor;
+	
+  
+      if(colr!==rgbCompare){
+      easyDiv[id].style.visibility="hidden";
+       document.querySelector("#errorMsg").textContent="Try Again";
+       }
+
+       else
+       	 {
+              for(var i=0;i<len;i++)
+              {
+
+       	 	      easyDiv[i].style.visibility="visible"
+       	 	      easyDiv[i].style.backgroundColor=colr;
+       	      }
+              header.style.backgroundColor=colr;
+              document.querySelector("#errorMsg").textContent="Correct";
+              newColor.textContent="PLAY AGAIN?";
+              isCorrect=true;
+              newColor.addEventListener("click",randomNumber);//enabling the new color button again
+              if(isHardDisabled){
+                hardClick.addEventListener("click",randomNumber);
+                hardClick.addEventListener("click",divDisplay);
+                isHardDisabled=false;
+              }
+              else{
+                 easyClick.addEventListener("click",randomNumber);
+                 easyClick.addEventListener("click",divDisplay);
+               }
+       	 }
+}
+
+function divDisplay(){
+    if(this===easyClick)
+      document.getElementById("hardDivs").style.display="none";
+    else if(this===hardClick)
+       document.getElementById("hardDivs").style.display="inline";
+
+}

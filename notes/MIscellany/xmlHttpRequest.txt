@@ -1,0 +1,23 @@
+xmlHttpRequest- used to retrieve info from the web server.The info can be a jason,xml,pdf
+etc.
+
+Sending a request can be done using two methods:
+create a request object:
+var reqObj=new xmlHttpRequest();
+
+reqObj.open("GET",url,true/false);
+reqObj.send();
+
+GET=type of request.
+Get is simpler and faster.However,POST has no size limitation and is more secure.POST is
+used when transferring large data.
+
+url-the address of the file on the server.Can be any kind of file-.txt,pdf,xml.
+
+true-when you want JS to behave asynchronously-AJAX implementation.This ensures that
+JS is doing other jobs while waiting for the request.Specify a function to execute when
+the response is ready in the onreadystatechange event.
+
+false-JS waits until the request is received.This is risky when the server is slow or busy.
+In such a case the application will be hung.
+

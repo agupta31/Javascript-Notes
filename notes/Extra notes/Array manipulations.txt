@@ -1,0 +1,129 @@
+UNSHIFT:used to add elements at the beginning of the array.
+
+.JS:
+var list=[];
+ list.unshift("green");
+ list.unshift("yellow");
+ console.log(list);
+
+OUTPUT:
+yellow green
+
+SHIFT:
+deletes the first element  from the array and also returns the element.
+console.log(list.shift());
+OUTPUT:
+yellow
+
+
+
+PUSH:
+used to insert elements at the end of the array.
+var list=[];
+ list.push("blue");
+ list.push("red");
+ console.log(list);
+OUTPUT:
+blue red
+
+
+
+CONCAT:concats new elements at the end of the original array and returns a new array.The original array remains
+unchanged.
+
+"use strict";
+ var list=["blue","green","red"];
+
+   var newList=list.concat("yellow","beige");
+   console.log(newList);
+
+OUTPUT:
+["blue", "green", "red", "yellow", "beige"]
+
+SPLICE-array.splice(index,noOfElements);
+
+console.log(newList.splice(1,2));
+OUTPUT:
+["green", "red"]
+POP:deletes and returns the last element from the array
+console.log(list.pop());
+OUTPUT:
+red
+
+ //removes item at index 2 and inserts 'orange' in its place.
+//splice changes the original array
+
+newList.splice(2,1,"orange");
+console.log(newList);
+OUTPUT:
+ ["blue", "green", "orange", "yellow", "beige"]
+
+
+//doesn't remove anything but shifts the item 2 and places 'orange' in it's stead.
+    newList.splice(2,0,"orange");
+    console.log(newList);
+
+SLICE:slice(beginIndex,endIndex)
+//slices the array from the beigning index to endIndex-1 
+ //slice doesn't change the original array
+   console.log(list.slice(1,3));
+OUTPUT:
+[green,red]
+
+
+
+SLICE USING NEGATIVE NUMBERS:
+"use strict";
+ var list=["blue","green","red","yellow","beige"];
+
+ //returns the last item in the array
+   var k=list.slice(-1);
+//returns the items from -1 to -3 in the order ["red","yellow","beige"]
+ console.log(list.slice(-3));
+   console.log(k);
+
+
+INDEXOF:
+
+  "use strict";
+ var list=["blue","green","red","yellow","beige"];
+//gives the index of the given element.
+ console.log(list.indexOf("red"));
+ //gives the last index(i.e. index from the end) of the item specified
+ console.log(list.lastIndexOf("green"));
+ //returns -1 if the itme is not in the list
+ console.log(list.indexOf("cvd"));
+
+
+
+SORT OBJECTS:
+
+"use strict";
+ var list=[
+
+         {
+           color:"red",
+          size:10
+
+         },
+          {
+            color:"green",
+            size:2
+          },
+          {
+            color:"blue",
+            size:6
+          }
+
+ ];
+
+ var k=list.sort(function(a,b){
+  return a.size>b.size;
+ });
+
+ console.log(k);
+
+//sorts the array w.t.r to size.
+
+
+74ce990344baa910d82e139046caf546

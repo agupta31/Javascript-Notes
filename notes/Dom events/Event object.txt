@@ -1,0 +1,36 @@
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+
+      
+       <p id="demo"></p>
+ 
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+SCRIPT:
+function init(){
+var tag= document.getElementById("demo");
+tag.onclick=setColor(tag);
+}
+
+function setColor(eventObj){
+
+    eventObj.innerHTML="<h1>Hello world</h1>";
+    console.log(eventObj);
+}
+init();

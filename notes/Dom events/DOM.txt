@@ -1,0 +1,206 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  
+
+</head>
+
+<body>
+
+    <h1>This is news</h1>
+    <div id="news1">This news is exhilirating</div>
+
+ <script> 
+  var element=document.getElementById("news1").innerHTML;
+  alert(element);
+
+   </script>
+
+
+</body>
+
+</html>
+
+
+
+USING ON SUBMIT:
+
+<body>
+
+    
+       
+     <div id="div1">
+
+     </div>
+     <br/>
+       <form onsubmit="alert('your form has been submitted')">
+      NAME:  <input type ="text"><br/><br/>
+      ADDRESS:<input type="textarea"><br/><br/>
+     <input type="submit" value="Please submit">
+    </form>
+
+    
+ <script> 
+     
+   </script>
+
+
+</body>
+
+
+DOM MANIPULATION:
+getElementById():
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+ 
+ 
+
+</head>
+
+<body>
+        <p id="code1">The eagle is in the sky</p>
+        <p id="code2">the fox is in the jungle</p>
+        <p id="code3">snuck into the garden last night</p>
+        <p id="code4">my watch stopped working</p>
+       
+        <script type="text/javascript" src="script.js"></script>
+
+</body>
+      
+</html>
+
+
+script:
+var k=document.getElementById("code4");
+k.innerHTML=k.innerHTML+" at midnight";
+alert(k.innerHTML);
+
+
+
+ONLOAD FUNCTION:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+ 
+   <script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+        <p id="code1">The eagle is in the sky</p>
+        <p id="code2">the fox is in the jungle</p>
+        <p id="code3">snuck into the garden last night</p>
+        <p id="code4">my watch stopped working</p>
+       
+</body>
+  
+</html>
+
+script:
+
+function init(){
+  
+var k=document.getElementById("code4");
+k.innerHTML=k.innerHTML+" at midnight";
+alert(k.innerHTML);
+
+}
+window.onload=init;
+
+when we put our script file inside the head and try to call getElementById it returns null because head is 
+loaded even before the rest of the page is executed(i.e. before the DOM is created so getElementById
+returns null)Hence,we put our code inside a function and attach it to the onload property of the window.This 
+ensures that the script will run only after the entire page is loaded.
+
+
+
+
+EXAMPLE:MAKE A SONG LIST
+script:
+function addSongs(){
+var song1=document.getElementById("song1");
+var song2=document.getElementById("song2");
+var song3=document.getElementById("song3");
+
+ song1.innerHTML="how to save a life";
+ song1.style.background="green";
+ song2.innerHTML="bring me to life";
+ song3.innerHTML="kaho na kaho";
+ song3.style.fontSize="50px";
+}
+
+window.onload=addSongs;
+
+
+html:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+ 
+   <script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+        <div id="container">
+           <p id="song1"></p>
+           <p id="song2"></p>
+           <p id="song3"></p>
+
+        </div>
+       
+</body>
+  
+</html>
+
+
+
+SETTING ATTRIBUTES OF ELEMENTS:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+ 
+   
+
+</head>
+
+<body>
+        <div id="container">
+           <p id="greenplanet"></p>
+           <p id="redplanet"></p>
+           <p id="yellowplanet"></p>
+
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+script:
+
+var planet=document.getElementById("greenplanet");
+planet.innerHTML="This is a green planet"+ "<br/>";
+planet.setAttribute("class","redtext");
+planet.innerHTML+="hi there";

@@ -1,0 +1,22 @@
+var k={
+      firstname:'akash',
+      lastname:'gupta',
+      addEventListener:function(a,b){
+      	b.call(k);//b points to the function passed to it.Therefore,we invoke the 
+                  function as b().We use call and pass k to it so that 'this' inside
+                   the function b points to the object k otherwise this will point to
+                  undefined.
+      }
+            
+      
+};
+ k.addEventListener("click",function(){//passing a function reference to b.
+ 	 console.log(this.firstname+" "+this.lastname);
+ });
+
+OUTPUT:
+akash gupta
+
+
+
+

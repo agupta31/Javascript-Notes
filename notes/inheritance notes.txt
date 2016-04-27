@@ -1,0 +1,118 @@
+PROTOTYPAL INHERITANCE:
+
+All objects in JS have a property called proto which holds a reference to another object.Similarly this proto
+can contain another proto property and so on thus forming a chain.
+
+If I want to access a property on a object JS first looks for it in that object.If it doesn't find it there
+then it goes to it's protoype.
+
+objects can share the same protoype.
+
+The bottom of a the prototype chain is always Object{}
+
+eq:
+ var a=[];
+ function greet(){};
+ var k={};
+
+a.__proto__ will give us []
+greet.__proto__ will give us function(){}
+k.__proto__ will give us Object{}
+
+when we do a.push what happens?...
+
+a.__proto__ gives us in built methods.When we look for it in a JS doesn't find it and goes down the prototypal
+chain to find it and sees its there.
+
+
+Every function in javascript has a prototype property.
+
+var john=new person();
+
+creates a new empty object called person and sets the prototype of this object as the prototype property of 
+the function person.
+
+
+we construct the object using a person function(know as a function constructor).
+
+
+
+BUILT IN FUNCTION CONSTRUCTORS:
+var k=new Number(3);-->creates an object with value 3
+
+var s=new String("akash");-->creates a string object with value akash
+
+var m="akash"-->this is a primitive type.
+
+eq:
+
+String.prototype.getFullLength=function(){
+	  return this.length>3;
+}
+//JS wraps "akash" as a string object so this does nto show any error
+console.log("akash".getFullLength());
+
+Number.prototype.isPositive=function(){
+	return this>0;
+}
+
+console.log(3.isPositive()); --->will throw an error as 3 is not an object but a primitive type.So You need to
+explicityly cast it into an object as shown below.
+var k=new Number(3);
+console.log(k.isPositive());
+
+OUTPUT:
+true
+true
+
+
+PURE PROTOTYPAL INHERITANCE USING object.create
+
+
+
+var person={
+	   firstname:"akash",
+	   lastname:"gupta",
+	   greet:function(){
+	   	  return "hello" +this.firstname+" "+this.lastname;
+	   }
+}
+
+//this creates an empty john object whose prototype property points to 
+//person object
+var john=Object.create(person);
+  console.log(john);
+
+  //you can now overrride the properties inside the prototype
+  john.firstname='john';
+  john.greet=function(){
+  	   return this.firstname+" "+this.lastname;
+  }
+  console.log(john.greet());
+
+OUTPUT:
+Object {}
+
+john gupta
+
+
+POLYFILLS:object.create may not be supported in old browsers.In that case you have to explicitly check for
+it's existence and then create a prototype.
+
+
+if(!Object.create){
+  Object.create=function(obj){
+
+  	    if(arguments.length>1){
+           throw new error("object.create impplementation only accepts"
+           +" the first parameter");
+  	    }
+  	    function F(){}
+  	    F.prototype=obj;
+  	    return new F();
+  }
+    
+}
+
+
+

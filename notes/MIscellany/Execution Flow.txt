@@ -1,0 +1,47 @@
+HOW THE JS WORKS:
+var migrate=true;
+
+if(migrate)
+{
+	quack(4);
+	fly(2);
+}
+
+function quack(x)
+{
+   console.log("hi from quack "+x);
+}
+
+var fly=function(num)
+{
+	console.log("hi from fly "+num)
+}
+
+The JS takes two passes through your code.First is the creating phase and the second
+is the execution phase.Lets go through it.
+
+CREATION PHASE:
+GEC-GLOBAL EXEC CONTEXT IS CREATED- Holds Global variables,'this'(points to window),
+Outer environment
+
+step1:sees a variable migrate and saves it in GEC with value undefined.
+
+step 2:sees a function declaration .Assigns it to a variable quack ,saves it in GEC.
+So quack now holds a reference to a function.
+
+step3:sees a variable fly(here JS is not able to detect a function expression so
+it does not save its state) and saves it in GEC with a value undefined.
+
+
+EXECUTION PHASE:2ND PASS:
+
+step 1:sees a variable migrate and sets it to value 'true'.
+
+step2:evaluates the if statement.
+
+step3:sees function quack and invokes it.
+
+step4:sees function fly which is a function expression so is saved 
+as a variable fly which is still undefined.As a result throws error.
+
+It can be seen that function expressions should be invoked after its defined.

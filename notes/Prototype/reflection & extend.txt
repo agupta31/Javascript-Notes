@@ -1,0 +1,62 @@
+
+REFLECTION:
+var person={
+    firstname: "akash",
+    lastname: "gutpa",
+    getFullName: function (){
+        return this.firstname+" "+this.lastname;
+    }
+}
+
+var jane={
+    firstname: "jane",
+    lastname:"austen"
+}
+
+jane.__proto__= person;
+                     //hasOwnProperty-checks whether that property exists inside john
+for(var x in jane){ 
+    if(jane.hasOwnProperty(x))//this demonstrates reflection where jane
+    	                       //is able to see its own properties and change it
+     console.log(x+" : "+jane[x]);
+}
+
+OUTPUT:
+
+firstname: "jane",
+lastname:"austen"
+
+
+
+USING EXTEND FROM UNDERSCORE.JS:
+
+var person={
+    firstname: "akash",
+    lastname: "gutpa",
+    getFullName: function (){
+        return this.firstname+" "+this.lastname;
+    }
+}
+
+var jane={
+    firstname: "jane",
+    lastname:"austen"
+}
+
+jane.__proto__= person;
+
+var jim={
+	getFirstName:function(){
+		return firstname;
+	}
+}
+var kate={
+	address:"90 banerjee lane",
+	getFormalFullName:function(){
+		return this.lastname+" "+this.firstname;
+	}
+}
+
+_.extend(jane,jim,kate);//attaches these two objects to jane
+console.log(jane);
+

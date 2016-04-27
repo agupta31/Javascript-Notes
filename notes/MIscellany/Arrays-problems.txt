@@ -1,0 +1,44 @@
+
+ var arr=['a','b','c','d'];
+ var arr1=[1,1,1,4];
+ var arr2=[3,0,32,12,32,98,12,8];
+
+ function printReverse()
+ {
+   for(var i=arr.length-1;i>=0;i--)
+       console.log(arr[i]);
+ }
+ function isUniform()
+ {
+     var first=arr1[0];
+     for(var i=1;i<arr1.length;i++)
+     {
+         if(first!==arr1[i])
+             return false;
+       }
+       return true;
+            
+ }
+ var add=function(){
+      var sum=0;
+      for(var i=0;i<arr1.length;i++)
+      {
+          sum+=arr1[i];
+      }
+      return sum;
+ }();
+
+ var maximum=function(){
+   var max=arr2[0];
+    for(var i=1;i<arr2.length;i++)
+    {
+       if(arr2[i]>max)
+          max=arr2[i];
+    }
+    return max;
+ }();
+
+printReverse();
+console.log(isUniform());
+console.log(add);
+console.log(maximum);

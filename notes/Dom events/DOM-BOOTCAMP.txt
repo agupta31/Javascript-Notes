@@ -1,0 +1,108 @@
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+         <h1 id="h1">AKASH GUPTA</h1>
+         <p>My header</p>
+
+
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+SCRIPT: //query selector
+
+var body=document.querySelector("body");
+ var isBlue=false;
+ setInterval(function(){
+   if(isBlue)
+   	 body.style.background="white"
+   	else
+ 	body.style.background="#3498db";
+
+ isBlue=!isBlue;
+ },1000);
+
+
+//selectors:
+
+//getElementByClassName-returns a node list of all matching items
+
+var li=document.getElementsByClassName("bolded");
+console.log(li);
+
+//returns all matching tags in the form of a node list
+var x=document.getElementsByTagName("li");
+console.log(x);
+
+//query selector-returns the first matching element
+ var k=document.querySelector(".bolded");
+ console.log(k);
+
+ //returns selector -returns a node list of all elements
+ var h=document.querySelectorAll(".bolded");
+ console.log(h);
+
+
+EXERCISE:
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+         <h1>I am an h1</h1>
+          <p id="first" class="special">Hello</p>
+          <p class="special">Goodbye</p>
+          <p>Hi again</p>
+          <p id="last">Goodbye Again</p>
+
+
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+
+SCRIPT:
+
+//select the first p tag:
+var x=document.querySelector(".special");
+console.log(x);
+
+var k=document.querySelector("#first");
+console.log(k);
+
+var m=document.getElementById("first");
+console.log(m);
+
+var l=document.querySelector("p");
+console.log(l);
+
+var h=document.getElementsByClassName("special")[0];
+console.log(h);
+
+var p=document.querySelector("h1+p");
+console.log(p);
+
+console.log(document.getElementsByTagName("p")[0]);

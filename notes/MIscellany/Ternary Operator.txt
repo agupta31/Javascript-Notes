@@ -1,0 +1,9 @@
+var x=12;
+
+
+x===12?"hello":"hola";
+
+OUTPUT:
+hello
+
+if x===12 is true then return hello else return hola.

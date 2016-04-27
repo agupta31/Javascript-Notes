@@ -1,0 +1,84 @@
+//classic example of closure and callback
+
+function sayHello(){
+	var greet="hi";
+
+	setTimeout(function(){
+		console.log(greet);
+                console.log(this);
+	},2000);
+}
+
+sayHello();
+OUTPUT:
+hi
+window object
+
+
+//setTimeout is passed a callback function.This is an example of a function being
+//passed as a parameter which shows the power of first class functions.
+//also this function has been created on the fly so it is a function expression.
+//we first call sayHello.After sayHello() has finished executing the JS engine looks at 
+//its event queue where it finds the setTimeout event.It waits for 2s and then looks
+//for the callback function and executes it.
+
+//closure-we can see that even though sayHello has finished executing the
+//callback function has access to the variable greet.This is a classic example
+//of closure.
+
+
+EXAMPLE USING JQUERY:IMPORTANT:
+what goes under the hood of this jQuery statement:
+
+$("#button").click(function(){
+   
+});
+
+
+HERE'S WHAT GOES ON:
+
+var button={
+        name:"button",
+        width:"200px",
+        color:"grey",
+	   click:function(func){
+         //invoking the function passed as an argument.
+           func(this);
+	   }
+}
+//invoking click method inside button object.
+button.click(function(obj){
+	console.log("hi"+" "+ obj.name+" "+obj.width+" "+obj.color);
+
+});
+OUTPUT:
+hi button 200px grey
+
+
+
+EXPLANATION:
+button is an object which has properties and a method called click which accepts a function
+as its parameter(again an example of first class function used as a function expression).
+
+we are simply invokng the method click on the object button and passing the function argument.
+Inside the click function we are invoking the function which has been passsed and passing
+'this' to it so that it has access to all the button properties.
+
+
+CALLBACK EXAMPLE:
+Callback function-a function you give to another function to be executed when that function
+has finished execution.
+function tellMeWhenDone(callMeBack)
+{
+
+	var a=12;
+	var b=34;
+	console.log("hi from tellMeWhenDone"+ " "+a+" "+b);
+	//we are telling tellmewhendone that when you are done execute the
+    //callback function
+	callMebBack();
+}
+//we are passing tellmeWhenDone a callback function
+tellMeWhenDone(function(){//this is my callback function
+	console.log("hi from callback function");
+})

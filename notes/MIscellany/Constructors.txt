@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  
+
+</head>
+
+<body>
+
+ <script src="script.js"> 
+   
+   </script>
+
+
+</body>
+
+</html>
+
+
+
+JS:
+
+   
+   function animal(strength,speed,skill)
+   {
+   	this.strength=strength;
+   	this.speed=speed;
+   	this.skill=skill;
+   }
+    
+    var lion= new animal("9","6","7");
+    var tiger= new animal("9","7","9");
+    var elephant= new animal("10","6","5");
+
+    for(var x in lion)
+    {
+    	document.write(lion[x]+"<br/>");
+    }

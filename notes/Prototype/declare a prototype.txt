@@ -1,0 +1,44 @@
+EXAMPLE 1:
+var person={
+    firstname: "akash",
+    lastname: "gutpa",
+    getFullName: function (){
+        return this.firstname+" "+this.lastname;
+    }
+}
+
+var jane={
+    firstname: "jane",
+    lastname:"austen"
+}
+
+jane.__proto__= person;
+console.log(jane.getFullName());
+
+OUTPUT:
+jane austen-
+this is because 'this' points to the object on which the function was 
+called in this case-jane.
+
+
+
+EXAMPLE 2:
+var person={
+    firstname: "akash",
+    lastname: "gupta",
+    getFullName: function (){
+        return this.firstname+" "+this.lastname;
+    }
+}
+
+var akash={
+     firstname:"alihandro",
+      age:21
+}
+
+akash.__proto__=person;
+console.log(akash.getFullName());
+
+OUTPUT:
+alihandro gupta
+

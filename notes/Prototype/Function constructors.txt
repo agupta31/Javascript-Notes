@@ -1,0 +1,43 @@
+Function constructor-A normal function which is used to create an object.
+
+The this variable points to a new empty object and that object is returned from the
+function automatically.
+
+EXAMPLE 1:
+function person(first,last){
+	console.log(this);
+	this.firstname=first;
+	this.lastname=last;
+	this.getFullName=function(){
+		console.log(this.firstname+" "+this.lastname);
+	}
+	console.log("function is invoked");
+}
+
+var k=new person("akash","gupta");
+var x=new person("utpal","gupta");
+console.log(k);
+k.getFullName();
+console.log(x);
+x.getFullName();
+
+
+
+OUTPUT:
+person{}
+function is invoked
+akash gupta
+
+
+
+person{}
+function is invoked
+utpal gupta
+
+
+
+PROGRAM FLOW:The new keyword creates an empty object.
+As soon as we call the person() function the 'this' keyword will intially
+point to the empty object.
+We can then use the 'this' keyword to assign properties to the object.
+We are therefore creating an object by calling a function.

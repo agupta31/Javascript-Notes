@@ -1,0 +1,15 @@
+TWO WAYS OF CREATING A GLOBAL OBJECT:
+using var:
+You can create a global object using the var keyword.
+eg:
+
+var name="akash";
+if a variable is declared without the var keyword then JS automaitcally amkes it global!
+
+USING this.
+
+this.name="akash" ---->creates a global object.
+
+
+difference between var nad this?
+using var you create a non deleteable property while using this you can delete the property.

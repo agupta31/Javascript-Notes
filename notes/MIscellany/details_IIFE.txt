@@ -1,0 +1,16 @@
+IIFE:
+
+(function(firstname,lastname,age)
+{
+   console.log("inside IIFE: "+firstname+" "+lastname+" "+age);
+})('akash','gupta',21);
+
+OUTPUT:
+inside IIFE: akash gupta 21
+In JS parenthesis is used for grouping expression and has the highest precedence.
+The parenthesis at the beginning of the function tells the parser that this is
+meant to be an expression and not a normal function statement.
+We are creating the function and invoking it on the fly.
+
+
+

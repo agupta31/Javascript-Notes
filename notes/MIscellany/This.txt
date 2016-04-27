@@ -1,0 +1,192 @@
+var obj={
+    name:'akash',
+    age:12,
+    b:function()
+    {  
+      console.log(this);//here this points to the current object which is obj.
+      this.name='alihandro';//changes the name property of the object obj 
+      console.log(this);//the name property is changed
+
+    }
+
+ }
+console.log(this);//here this points to the global object window
+obj.b();
+console.log(obj.name);
+
+OUTPUT:
+Window {external: Object, chrome: Object, document: document, obj: Object, speechSynthesis: SpeechSynthesis…}
+script.js:7 
+Object {name: "akash", age: 12}
+script.js:9 
+Object {name: "alihandro", age: 12}
+script.js:16
+alihandro
+
+
+
+JAVASCRIPT BUG:HOW THIS DOES NOT WORK INSIDE A NESTED FUNCTION:
+var obj={
+    name:'akash',
+    age:12,
+    b:function()
+    {  
+      console.log(this);
+      this.name='alihandro';
+      console.log(this)
+
+       var setname=function(newName)
+       {
+         this.name=newName;
+
+       }
+
+       setname('tony');
+    }
+     
+ }
+
+console.log(this);
+obj.b();
+console.log(obj.name);
+
+OUTPUT:
+alihandro
+
+
+
+SOLUTION TO THE ABOVE BUG:
+var obj={
+    name:'akash',
+    age:12,
+   
+    b:function()
+    { var self=this;
+      console.log(self);
+      self.name='alihandro';
+      console.log(self)
+
+       var setname=function(newName)
+       {
+         self.name=newName;
+
+       }
+
+       setname('tony');
+    }
+     
+ }
+
+console.log(this);
+obj.b();
+console.log(obj.name);
+
+OUTPUT:
+tony
+
+
+SIMPLE THIS EXAMPLE(HEADFIRST JAVASCRIPT):
+var fiat={
+       make:"fiat",
+       model:"500",
+       year:1957,
+       startEngine:false,
+
+       start:function(){
+         startEngine=true;
+       },
+
+       stop:function(){
+        startEngine=false;
+       },
+
+       drive:function(){
+         if(startEngine)
+           console.log("zoom zoom");
+         else
+          console.log("engine not yet started");
+       }
+
+}
+
+fiat.drive();
+fiat.start();
+fiat.drive();
+fiat.stop();
+
+OUTPUT:
+uncaught reference error:startEngine is not defined
+
+//The above output is because the JS engine does not know the state of the variable startEngine.This is because
+it is not a variable but a property of an object.The JS engine has no knowledge about the object to which 
+startEngine belongs to.As, a result we use the this keyword to tell the JS engine that starEngine belongs
+to the fiat object.
+
+var fiat={
+       make:"fiat",
+       model:"500",
+       year:1957,
+       startEngine:false,
+
+       start:function(){
+         this.startEngine=true;
+       },
+
+       stop:function(){
+       this.startEngine=false;
+       },
+
+       drive:function(){
+         if(this.startEngine)
+           console.log("zoom zoom");
+         else
+          console.log("engine not yet started");
+       }
+
+}
+
+fiat.drive();
+fiat.start();
+fiat.drive();
+fiat.stop();
+
+
+ANOTHER SCENARIO:
+var fiat={
+       make:"fiat",
+       model:"500",
+       year:1957,
+       startEngine:false,
+
+       start:function(){
+         this.startEngine=true;
+       },
+
+       stop:function(){
+        startEngine=false;
+       },
+
+       drive:function(){
+         if(startEngine)
+           console.log("zoom zoom");
+         else
+          console.log("engine not yet started");
+       }
+
+}
+
+
+fiat.start();
+fiat.drive();
+
+OUTPUT:
+uncaught reference error:startEngine is not defined
+
+//this is becasue even thought we are specifying that startEngine is the property of fiat object we are not doing so in
+the drive method.As, a result JS engine does not understand the state of startEngine.
+
+'This' gets assigned to the object when that particular method is called.
+
+for (var prop in ball)
+  console.log(prop+" : "+ball[prop]);//prints the object properties in arbitary order
+

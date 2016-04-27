@@ -1,0 +1,84 @@
+HTML:
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+
+      <ul>
+          <li>Finish Javascript by Cole</li>
+          <li>Practice Coding</li>
+          <li>Sleep by 12:30</li>
+
+      </ul>
+
+ 
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+SCRIPT:
+var tag=document.getElementsByTagName("li")[0];
+
+tag.addEventListener("mouseover",function(){
+	tag.classList.add("changeColor");
+});
+tag.addEventListener("mouseout",function(){
+	tag.classList.remove("changeColor");
+});
+
+
+//selecting li's one after the other:
+
+var lis=document.getElementsByTagName("li");
+
+for(var i=0;i<lis.length;i++){
+lis[i].addEventListener("mouseover",function(){
+	this.classList.toggle("changeColor");
+});
+	
+lis[i].addEventListener("mouseout",function(){
+	this.classList.toggle("changeColor");
+});
+
+lis[i].addEventListener("click",function(){
+	this.classList.toggle("done");
+});	
+	
+}
+
+
+
+CSS:
+*{
+ 	margin: 0;
+ }
+ ul{
+ 	margin: 10px;
+ }
+  li{
+  	cursor: pointer;
+  }
+  .changeColor{
+  	color: green;
+  }
+  .done{
+   text-decoration: line-through;
+  }
+
+
+var list=document.getElementsByTagName("a");
+var count=0;
+
+for(var i=0;i<list.length;i++)
+{
+  count++;
+}
+console.log(count);

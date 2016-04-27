@@ -1,0 +1,107 @@
+var arr=[
+      134,
+      136,
+      {
+        name:'akash',
+        age:26
+      },
+      function(x,y)
+      {
+        var myname=x;
+        var myage=y;
+        console.log("name is:"+myname+" age is "+myage);
+      },
+      false,
+]
+console.log(arr);
+arr[3](arr[2].name,arr[2].age);
+
+OUTPUT:
+[134, 136, Object, function, false]
+
+name is:akash age is 26
+
+
+
+
+METHODS:
+var arr=['apple','orange','green','yellow'];
+
+ arr.push('jalapeno');//pushes at the end
+ console.log(arr);
+ arr.pop();//pops from the end
+ console.log(arr);
+
+ arr.unshift('alihandro');//pushes at the beginning
+ console.log(arr);
+ arr.shift();//pops from the beginning
+ console.log(arr);
+
+ var x=arr.indexOf('orge');//gives the index at which this element is present.Returns -1 if not present.
+ console.log(x);
+
+ var x=arr.slice(1,4);//gives a part of the array.
+ console.log(x);
+
+OUTPUT:
+["apple", "orange", "green", "yellow", "jalapeno"]
+["apple", "orange", "green", "yellow"]
+["alihandro", "apple", "orange", "green", "yellow"]
+["apple", "orange", "green", "yellow"]
+-1
+["orange", "green", "yellow"]
+
+
+
+NESTED ARRAYS AND OBJECTS:
+
+var players=[
+             {
+               levels:[
+                      {
+                         score:21
+                       },
+                       {
+                        score:35
+                       }
+                    ]
+                     
+             },
+
+             {
+               levels:[
+                      {
+                         score:67
+                       },
+                       {
+                        score:30
+                       }
+                    ]
+                     
+             },
+             
+]
+           
+
+console.log(players.length);
+console.log(players[1].levels[0].score);
+OUTPUT:
+2
+67           
+
+DEFINING OBJECTS INSIDE ARRAYS:
+var others=[
+            
+       akash={
+            score:12
+           },
+        badhrel={
+            score:34
+           },
+        gadhrel={
+            score:23
+           }
+
+];
+
+

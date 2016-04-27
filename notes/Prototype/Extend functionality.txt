@@ -1,0 +1,48 @@
+var jane={
+    firstname: "jane",
+    lastname:"austen"
+}
+
+ var jim={
+	getFirstName:function(){
+		return firstname;
+	}
+}
+var kate={
+	address:"90 banerjee lane",
+	getFormalFullName:function(){
+		return this.lastname+" "+this.firstname;
+	}
+}
+var arr=[jane,jim,kate];
+extend(arr);
+
+function extend(objectsColl)
+{
+	var obj={};//creates a new object and adds the three objects
+   for(var i=0;i<objectsColl.length;i++){
+
+	 for(var j in objectsColl[i]){
+	 	 obj[j]=objectsColl[i][j];
+	 }
+	}
+	 console.log(obj);
+}
+
+
+//Another way:
+var assignVals=function (objectsColl)
+{
+	var obj=objectsColl[0];//takes first obeject and adds the other two to it
+	for(var i=1;i<objectsColl.length;i++)
+	{
+		for(var j in objectsColl[i])
+		{
+			obj[j]=objectsColl[i][j];
+		}
+	}
+	return obj;
+
+}
+var extend=assignVals(arr);
+console.log(jane);

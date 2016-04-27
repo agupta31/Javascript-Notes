@@ -1,0 +1,148 @@
+CREATING A DWARF OBJECT:  
+
+ <script type="text/javascript"> 
+    
+    var dwarf= new Object();
+
+    dwarf.strength= "9";
+    dwarf.armor= "7";
+    dwarf.attack= "12";
+    dwarf.show_properties= function(){
+    	document.write("strength:"+dwarf.strength+" <br/>" +"armor:"+dwarf.armor+" <br/>" 
+                        +"attack:" +" "+dwarf.attack);
+    }
+
+    dwarf.show_properties();
+ 
+   </script>
+
+OUTPUT:
+strength:9 
+armor:7 
+attack: 12 
+
+
+
+ANOTHER WAY OF CREATING AN OBJECT:
+var  dwarf = {
+
+        strength:"12",
+        armor:"10",
+        attack:"23",
+
+        show_properties:function(){
+        
+        document.write("strength:"+dwarf.strength+"<br/>" +"armor:"+dwarf.armor+"<br/>"+"attack:"+dwarf.attack);
+        }
+
+     }
+
+     dwarf.show_properties();
+
+
+
+
+ANOTHER EXAMPLE:
+var address={
+     city:'kolkata',
+     state:'west bengal',
+
+      apartment:{
+      	name:'kiran villa',
+      	street:'banerjee para'
+      },
+
+      display:function(){
+         document.write(address.apartment.name+"<br/>"+address.city+"<br/>"
+         	+address.state)
+      }
+
+}
+   address.display();
+ 
+
+
+EXAMPLE:
+
+var person={
+
+    name:"akash",
+     age:12,
+     address:{
+        state:'west bengal',
+        city:'kolkata',
+        zip:700031
+
+     }
+
+};
+
+   function display(human){
+     console.log(human.address.city);
+   }
+   
+   display(person);
+
+console.log(person.address.city);
+
+display({
+
+    firstname:'alihandro',
+    lastname:'bailando'
+
+}); //creating objects on the go and passing it inside the function.
+
+person.address2=new Object(); //creating another objects inside the person object
+person.address2.city='NJ';
+person.address2.state='piscataway';
+person.address2.zip=08854;
+
+console.log(person.address2.city);
+
+
+person.address3={   //creating a third address object inside person.
+  city:'charlotte',
+  state:'NC',
+  zip:28262
+}
+
+console.log(person.address3.city);
+
+
+EXAMPLE:
+var fiat={
+
+     make:"fiat",
+     model:"500",
+     year:1957,
+     color:"medium blue",
+     passenger:2,
+     convertible:false,
+     mileage:88000
+
+};
+
+ function passTest(car)
+ {
+
+   if(car.mileage>10000 && car.year>1957)
+      return true;
+    else
+      return false;
+
+ }
+
+ if(passTest(fiat))
+    console.log("the car has passed the test");
+  else
+    console.log("the car is a bummer");
+
+
+
+
+OBJECT LITERALS:
+var car={};//this is known as an object literal
+car.firstname="fiat";
+car.color="green";
+
+

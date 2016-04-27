@@ -1,0 +1,146 @@
+THIS KEYWORD:
+this in the GEC points to the window object.
+
+function x()
+{
+	console.log(this);//this still points to the window object
+	this.newVariable=21;//we can use this to create a global variable on the fly and assign a value to it.
+}
+
+function y()
+{
+	console.log(this);//this is still pointing to the window object
+}
+x();
+y();
+console.log(newVariable);
+
+
+EXAMPLE 2:
+var x={
+	name:'akash',
+	age:12,
+    logy:function(){
+    	console.log(this);
+    }
+
+}
+console.log(x.logy());
+In the above code as soon as JS engine encounters the 'this' keyword it understands that the function is 
+attached to the object x as a key:value pair so it tells this to point to object x.As,a result when we invoke
+the function it prints the object name :value pairs.
+
+WE CAN CHANGE THE PROPERTIES AS WELL:
+var x={
+	name:'akash',
+	age:12,
+    logy:function(){
+    	this.name='updated name';
+    	console.log(this);
+    }
+
+}
+x.logy();
+
+
+ANOTHER EXAMPLE:
+var y={
+	name:'alihandro',
+	roll:21,
+
+	  address:{
+         city:'kolkata',
+         zip:28262,
+         locate:function(){
+         	 console.log(this);
+         }
+	 }
+}
+y.address.locate();
+OUTPUT:
+Object {city: "kolkata", zip: 28262}
+
+In this case JS engine sees that the function expression is attached to the object address so it sets this
+to point to the address object(NOT THE OBJECT Y).
+
+WHAT IF YOU WANT 'THIS' TO POINT TO BOTH OBJECTS?
+USE CALL,APPLY AND BIND.
+
+USING CALL:
+var y={
+	name:'alihandro',
+	roll:21,
+
+	  address:{
+         city:'kolkata',
+         zip:28262,
+         locate:function(){
+         	 console.log(this);
+         }
+	 }
+}
+
+y.address.locate.call(y);
+y.address.locate();
+
+OUTPUT:
+Object {name: "alihandro", roll: 21, address: Object}
+
+Object {city: "kolkata", zip: 28262}
+In this case 'this' will point to both the objects because we are using the method call() in which we are sort
+of passing object y's reference to the anonymous function.
+
+
+ANOMALY IN 'THIS' WHEN USING NESTED FUNCTIONS:
+
+var y={
+	name:'alihandro',
+	roll:21,
+
+	  address:{
+         city:'kolkata',
+         zip:28262,
+         locate:function(){
+         	 console.log(this);
+
+
+         	   function nestedFunction(){
+         	   	  console.log(this);
+         	   }
+         	   nestedFunction();
+         }
+	 }
+}
+
+y.address.locate.call(y);
+
+OUTPUT:
+Object {name: "alihandro", roll: 21, address: Object}
+
+Window {external: Object, chrome: Object, document: document, y: Object, speechSynthesis: SpeechSynthesis…}
+
+The anomaly is that in this case the 'this' leyword in the nested function still points to the GEC
+and not the object attached to it!!!.The solution to this is using call,apply or bind shown below.
+
+var y={
+	name:'alihandro',
+	roll:21,
+
+	  address:{
+         city:'kolkata',
+         zip:28262,
+         locate:function(){
+         	 console.log(this);
+
+
+         	   function nestedFunction(){
+         	   	  console.log(this);
+         	   }
+         	   nestedFunction.call(y.address);
+         }
+	 }
+}
+
+y.address.locate.call(y);
+
+

@@ -1,0 +1,12 @@
+var kebabToSnake=function(str)
+{
+    
+    newStr=str.replace(/-/g,"_");
+
+    return newStr;
+}('dogs-are-awesome');
+
+ console.log(kebabToSnake);
+
+OUTPUT:
+dogs_are_awesome

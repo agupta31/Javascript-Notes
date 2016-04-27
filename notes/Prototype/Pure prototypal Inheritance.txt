@@ -1,0 +1,84 @@
+//pure prototypal inheritance
+
+var person={
+	  firstname:'akash',
+	  lastname:'gupta',
+	  greet:function(){
+	  	console.log("hola");
+	  }
+}
+
+var john =Object.create(person);//creates a prototype of john and 
+                                points it to person object
+console.log(john);//creates an empty object inheriting the
+                      same property structure as person.
+john.firstname="bandhrel";//adding values to the inherited properties
+john.greet=function(){
+	console.log("hi");
+}
+john.lastname="bagnan";
+john.age=26;//adding new values
+console.log(john);
+
+OUTPUT:
+object{}
+object{firsname:"bandhrel",lastname:"bagnan",age:26,greet()}
+
+Create a base object(person) and then use that object as a prototype for other objects
+Here,we are creating a prototype of the object person and it is being used by john
+object.
+
+EXAMPLE 2:
+var animal={
+	   isCanine:'false',
+	   isFeline:'false',
+	   speed:"50k/hr",
+	   size:'huge',
+}
+
+var dog=Object.create(animal);
+//this won't work as this will create a new dog object instead of putting values
+//to the dog object through inheritance
+dog={  
+	isCanine:true,
+	speed:"20km/hr"
+}
+
+console.log(dog);
+OUTPUT:
+object{isCanine:true,speed:"20km/hr"}
+
+
+
+
+USING POLYPHILlS:
+if(!Object.create)
+{
+	Object.create=function(obj){
+        if(!arguments.length>1){
+        	 function F(){}
+        	  F.prototype=obj;
+        	  return new F();//creates a new empty object by invoking an empty
+                            function and sets an empty prototype to the object that
+                          you passed in(i.e. obj)
+
+        }
+        else{
+        	throw new Error("takes only one argument");
+        }
+
+	}
+
+}
+
+
+var person={
+	firstname:"akash",
+	lastname:"gupta",
+	greet:function(){
+		console.log("hello");
+	}
+}
+
+var john=Object.create(person);
+console.log(john);

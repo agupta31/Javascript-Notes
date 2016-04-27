@@ -1,0 +1,83 @@
+HTML:
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+            <h1><span id="score1">0</span> to <span id="score2">0</span></h1>
+             <br/>
+            <p>playing to:<span>5</span> </p><br/>
+
+            <input type="number" id ="numberId">
+            <button id="player1">Player one</button>
+            <button id="player2">Player two</button>
+            <button id="reset">reset</button>
+
+ 
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+SCRIPT:
+
+var player1=document.querySelector("#player1");
+var player2=document.querySelector("#player2");
+var score1=document.querySelector("#score1");
+var score2=document.querySelector("#score2");
+var reset=document.querySelector("#reset");
+var scoreId=document.querySelector("#scoreId");
+var numberId=document.getElementById("numberId");
+var scoreLimit=scoreId.innerHTML;
+
+ numberId.addEventListener("change",function(){
+   scoreId.innerHTML=numberId.value;
+    scoreLimit=scoreId.innerHTML;
+ 	 
+ });
+
+player1.addEventListener("click",function(){
+	if(score1.innerHTML!=scoreLimit && score2.innerHTML!=scoreLimit)
+	    score1.innerHTML= Number(score1.innerHTML)+1;
+
+	if(score1.innerHTML==scoreLimit)
+	      	 score1.style.color="green";
+	            
+});
+
+player2.addEventListener("click",function(){
+	if(score2.innerHTML!=scoreLimit && score1.innerHTML!=scoreLimit)
+	  score2.innerHTML= Number(score2.innerHTML)+1;
+         
+    if(score2.innerHTML==scoreLimit)
+	      	 score2.style.color="green";
+	      
+});
+
+
+reset.addEventListener("click",function(){
+	score1.innerHTML=0;
+	score1.style.color="black";
+	score2.innerHTML=0;
+	score2.style.color="black";
+});
+
+
+CSS:
+*{
+ 	margin: 0;
+ }
+  .winner{
+  	color: green;
+  	font-size:60px;
+  }

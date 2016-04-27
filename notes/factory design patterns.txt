@@ -1,0 +1,25 @@
+//this is called a factory design pattern.Make greeting is a factory function
+//takes advantage of closure to set the value of language.
+
+function makeGreeting(language){
+
+        return function(firstname,lastname){
+              if(language==="en"){
+                 console.log("hello "+firstname+" "+lastname);
+              }
+              else if(language==="es"){
+                  console.log("hola "+firstname+" "+lastname);
+              }
+
+        }
+
+}
+//each of these function calls will create a new execution context and will have
+//its own closure.For greetEnglish the closure will have the value of "en" in the
+//language field.
+
+greetEnglish=makeGreeting("en");
+greetSpanish=makeGreeting("es");
+
+greetEnglish("akash","gupta");
+greetSpanish("bahdrel","bakrel");

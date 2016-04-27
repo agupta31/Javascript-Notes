@@ -1,0 +1,50 @@
+var newVar=[];
+do{
+
+var x=prompt('what would you like to do?');
+
+ if(x==='new'){
+    var addVar=prompt('please enter the item you want to add:');
+       addItems(addVar) ;
+ }
+ else if(x==='list')
+    console.log(newVar);
+ else if(x==='delete')
+    { var del=prompt('which element do you want to delete?');
+      var num=Number(del);
+      delItems(num);
+    }
+  
+  
+}while(x!=='quit');
+
+
+
+ function addItems(addVar){
+ 
+    newVar.push(addVar); 
+ }
+
+ function delItems(choice){
+      
+      if(choice===newVar.length-1)
+          newVar.pop();
+
+      else{
+      while(choice<newVar.length-1)
+      {
+         newVar[choice]=newVar[choice+1];
+         choice++;
+      }
+      newVar.pop();
+   }
+ }
+ 
+Instead of the above logic in the delete method you can use splice() method.
+eq:
+newVar=[3,7,1,9,3,2];
+   newVar.splice(1,2);  splice(index,no of elements you want to add/delete).Splice changes the original array.
+   console.log(newVar);
+
+OUTPUT:
+3,9,3,2

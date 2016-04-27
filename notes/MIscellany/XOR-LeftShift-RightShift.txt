@@ -1,0 +1,16 @@
+XOR:
+
+5^1= 4
+
+    0101
+    0111
+ans=0110
+HOW?
+XOR returns true only when inputs differ.
+
+OR:
+will return 0 if both digits are zero otherwise 1.
+
+    0101 
+    0011
+Ans=0111 

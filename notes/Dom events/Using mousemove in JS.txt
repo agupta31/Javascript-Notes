@@ -1,0 +1,11 @@
+function init(){
+	var map=document.getElementsByTagName("img")[0];
+	map.onmousemove=showCoords;
+}
+
+function showCoords(eventObj){
+	var x=eventObj.clientX;
+	var y=eventObj.clientY;
+	document.getElementsByTagName("p")[0].innerHTML="coordinates : "+x+" "+y;
+}
+init();

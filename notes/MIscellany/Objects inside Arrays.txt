@@ -1,0 +1,130 @@
+var posts=[
+         
+          {//object 1
+            title:'marlabs is fake',
+            author:'akash',
+            comments:["absolutely!!","Couldn't agree more "]
+          },
+
+          {//object 2
+            title:'trump makes provocative comments about immigrants-says will take jobs back from indians',
+            author:'New York Times',
+            comments:["he is disgusting"," he should be banned"]
+
+          }, 
+]
+
+  console.log(posts[0].comments[1]);
+
+OUTPUT:
+Couldn't agree more
+
+
+
+EXAMPLE 2:
+
+var student=[
+          
+            {
+               name:'akash',
+               roll:31,
+               marks:[74,89,98,67]
+            },
+
+            {
+               name:'alihandro',
+               roll:34,
+               marks:[34,23,45,12]
+            },
+
+            function(arr){
+                    var sum=0;
+                for(var i=0;i<arr.length;i++)
+                    sum+=arr[i];
+
+                 return sum;
+            }
+
+
+]
+
+ console.log("total marks: "+student[0].name+"  "+student[2](student[0].marks));
+  console.log("total marks: "+student[1].name+" "+student[2](student[1].marks));
+
+OUTPUT:
+total marks: akash  328
+
+total marks: alihandro 114
+
+
+
+EXAMPLE 3:
+var someObject={
+
+     friends:[
+            {name:'malfoy'},
+            {name:'crabbie'},
+            {name:'goyle'}
+     ],
+     color:'baby blue',
+     isEvil:true
+
+};
+
+ console.log(someObject.friends[0].name);
+
+OUTPUT:
+malfoy
+
+
+
+MOVIES DATABASE EXAMPLE:
+var movies=[
+           {
+             title:'godfather',
+             rating:5,
+             haveWatched:true
+           },
+
+           {
+             title:'departed',
+             rating:4.5,
+             haveWatched:false
+
+           },
+
+         {
+            title:'air lift',
+            rating:4.3,
+            haveWatched:false
+         },
+
+         {
+            title:'wedding crashers',
+            rating:3.5,
+            haveWatched:true
+         }
+
+]
+ for(var i=0;i<movies.length;i++)
+ {
+       if(movies[i].haveWatched)
+           console.log("you have watched "+movies[i].title+" - "+movies[i].rating+" stars");
+
+        else
+            console.log("you have not watched "+movies[i].title+" - "+movies[i].rating+" stars");
+ }
+
+
+
+OUTPUT:
+you have watched godfather - 5 stars
+
+
+you have not watched departed - 4.5 stars
+
+
+you have not watched air lift - 4.3 stars
+
+
+you have watched wedding crashers - 3.5 stars

@@ -1,0 +1,128 @@
+                                  FUNCTION ARE OBJECTS IN JAVASCRIPT
+
+
+In javascript functions are first class functions(i.e. you can do whatever you want with a function as you
+can do with other types)
+
+example 1:function creation
+ 
+function student(){
+	 console.log("hi there");
+}
+
+student.name1='akash',//setting properties to functions
+student.age=12;
+student.address={  //function containing an object
+          city:'kolkata',
+          country:'india',
+          zip:700031
+}
+student()//invoking the function
+console.log(student)//will print the function not invoke it.
+console.log(student.address.city);
+
+
+
+FUNCTION STATEMENTS AND FUNCTION EXPRESSIONS:
+
+Expression:a unit of code that results in a value.
+it doesn't have to save to a variable.Wht does this mean?
+
+eg: in javascript we can write:
+a=3;
+this will give us 3.Here we are saving the value in a's memory and when we output a we are getting 3.
+
+now if we do 1+3 and press enter in the console we are also getting 3.However,in this case we are not saving
+anythng in memory by storing it in a variable.It is just giving us a result.This is called an expression.
+
+
+greet();
+function greet() //function statement.It just sits there.It does not result in a value.
+{
+	console.log('hi');
+}
+
+
+var anonyGreet=function(){//function expression.It results in a value which is stored in variable anonyGreet.
+                          In this case the value is a function object which is assigned to var anonyGreet.  
+   console.log('hola');
+}
+  anonyGreet();
+
+
+In the above case we will get an output:
+hi
+hola
+
+
+However,if we do this:
+greet();
+function greet()
+{
+	console.log('hi');
+}
+
+anonyGreet();
+var anonyGreet=function(){
+	 console.log('hola');
+}
+The output will be:
+hi
+uncaught reference error:anonygreet is not a function.
+
+why is this?
+
+This is because during the creation phase of the GEC anonygreet is treated as a variable and is assigned a
+value undefined.In the execution phase when the java script engine sees anonyGreet() being invoked before
+its assignment it sees that it is set to undefined.Hence it throws an error.As, a result we should always 
+invoke function expressions after its definition.Therefore,function expressions are not HOISTED during the 
+GEC context creation.
+
+
+Why do we say that functions are first class in javascript?
+This is because we can do anything with it.Literally anything!!
+
+let's see how:
+
+function greet(x)
+{
+  console.log(x);
+}
+
+greet(function(){ //passing a functiion inside a function.
+  console.log("hello from the other side");
+ 
+});
+
+OUTPUT:
+function(){
+  console.log("hello from the other side");
+}
+
+
+
+HOW DOES FUNCTION INVOCATION WORK IN JAVASCRIPT?
+In javascript every function has a name property and a code property which is invokable.
+When we invoke a function like greet() the JS engine first looks for the name
+which is greet.It then goes to the memory location pointed to by greet.The parser then encounters this () and
+invokes the code inside the function.
+
+
+
+
+ANONYMOUS FUNCTIONS.WHY USE THEM?
+function start(){
+  alert("hi start the program");
+}
+window.onload=start;
+//We are assigning a function reference to the onload function and 
+We can clean up the code and assign a function expression to the onlaod instead of the 
+reference because a function expression itself evaluates to a function reference.
+This is done by 
+anonymous functions(which have no name).
+
+eq:
+window.onload=function(){//anonymous function
+ alert("hi start the program");
+}
+

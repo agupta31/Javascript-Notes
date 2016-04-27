@@ -1,0 +1,41 @@
+var str= new String("john");
+
+String.proto will be the prototype for str.So whatever methods are available inside
+String.proto will be automatically available in str.
+str here is an object which is created by using the keyword new and invoking 
+the String function as a constructor.
+eg: str.indexOf("h");indexOf is a method of String.proto which is accessible to
+str.
+
+when we output str like this console.log(str) we get an object.Lets see the difference
+var str="john";
+var srtObj=new String("john");
+console.log(str);
+console.log(strObj);
+
+
+OUTPUT:
+str=john
+strObj={
+      0:"j",
+      1:"0",
+      2:"h",
+      3:"n",
+      length:4,
+     [[primitiveValue]]:"john"
+}
+
+
+THE DANGEROUS PART OF IN BUILT FUNCTION CONSTRUCTORS:
+var x=3;//x is a primitve here
+var y=new Number(3);y is an object here with a name value pair as
+y={
+   [[primitiveValue]]:3
+}
+
+when we do 3==y in console we get true!! 
+This is because of coercion where the JS engine converts the object y into a number
+and compute it.
+
+so we should always do:
+3===y -no coercion so false.

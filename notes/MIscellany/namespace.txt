@@ -1,0 +1,38 @@
+var greet='hello';
+var greet='kemon acho';
+
+ var english={
+       greet:{
+         basic:'hello',
+         intermediate:'hi there'
+       }
+
+
+ };
+ var bangla={};
+ 
+
+ bangla.greet='kemon acho';
+
+
+ console.log(english.greetings.basic);
+ console.log(bangla.greet);
+
+
+
+AVOIDING NAMING CONFLICTS USING OBJECTS:
+var dogSpace={};
+dogSpace.speak=function(){ //same function but attached to different objects.Avoids conflict.
+    console.log("woof");
+}
+
+ var catSpace={};
+ catSpace.speak=function(){
+   console.log("meow");
+ }
+ dogSpace.speak();
+ catSpace.speak();
+
+OUTPUT:
+woof
+meow

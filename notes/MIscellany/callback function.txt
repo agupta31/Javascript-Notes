@@ -1,0 +1,31 @@
+//callbakc function: a function to which you pass a function,to be run when
+it finishes.
+
+In other words the function which you invoked 'calls back' the function
+which you passed to it as a parameter.
+
+
+
+function callMeWhenDone(callback)//so callMeWhenDone is the callback function
+{
+	var x=23;
+	var y=12;
+	var sum=x+y;
+	console.log(sum);
+	callback();
+}
+
+callMeWhenDone(function(){
+	console.log('you called back.Thanks');
+})
+
+callMeWhenDone(function(){
+	console.log('you called back again.Thanks a ton');
+})
+
+OUTPUT:
+35
+you called back.Thanks
+
+35
+you called back again.Thanks a ton.

@@ -1,0 +1,30 @@
+var employee={
+    name:'akash',
+    age:26,
+    company:'microsoft',
+
+     address:{
+        city:'seattle',
+        state:'washington',
+     }
+ }
+ console.log(employee);
+
+ var jasonFile=JSON.stringify(employee);//converting object to json format
+ console.log(jasonFile);
+
+  var jasonObj=JSON.parse('{ "course":"electronics","isValuable":"true","salary":1200}');//convertin jason file to object
+  console.log(jasonObj);
+
+OUTPUT:
+Object {name: "akash", age: 26, company: "microsoft", address: Object}
+
+
+ {"name":"akash","age":26,"company":"microsoft","address":{"city":"seattle","state":"washington"}}
+
+ //JSON 
+ Object {course: "electronics", isValuable: "true", salary: 1200}
+
+
+JASON file format is a valid JS object literal but not all JS object literals are valid
+JASON format.Jason has stricter rules.

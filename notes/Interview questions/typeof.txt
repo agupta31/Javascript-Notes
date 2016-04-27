@@ -1,0 +1,344 @@
+TYPE OF:
+Gives the type of the javascript variable:
+
+typeof "john"-string
+typeof 5.6- number
+typeof false- boolean
+typeof [1,2,3]- object
+typeof null- object
+typeof undefined- undefined
+typeof NaN-number
+typeof (typeof 1) -string..how?
+
+Lets See:
+typeof 1="number"
+typeof "number"=string
+
+typeof akash=undefined
+
+
+tricky :
+var a="";
+typeof a?
+will be string
+
+In js null is an object and undefined is undefined.
+
+Q1)what will be the output of the following code?
+(function() {
+	 var a=b=3;
+})();
+
+console.log("a defined?"+(typeof a!=='undefined'));
+console.log("a defined?"+(typeof b!=='undefined'));
+
+
+ANS:
+output will be :
+a defined? false
+b defined? true
+
+This is because var a=b=3; is in reality nothing but 
+b=3;
+var a=3;
+so a is defined locally within the function and as soon as the function is over it is
+not defined anymore so it outputs 'false',
+However,b has not been defined with a var inside the function so it is treated as
+a global variable.hence it gives 'true'.
+
+The above can be avoided by using the strict keyword.
+
+
+eq:
+"use strict";
+
+(function() {
+	 var a=b=3;
+})();
+
+console.log("a defined?"+(typeof a!=='undefined'));
+console.log("a defined?"+(typeof b!=='undefined'));
+
+OUTPUT:
+uncaught reference error: b is not defined
+
+
+
+Q2)what is the output of the following code?
+var myObject={
+ 	foo:"bar",
+ 	func:function(){
+ 		var self=this;
+ 		console.log(this.foo);
+ 		console.log(self.foo);
+
+ 		(function(){
+           console.log(this.foo);
+           console.log(self.foo);
+
+ 		})();
+ 	}
+ }
+
+ myObject.func();
+
+OUTPUT:
+bar
+bar
+undefined
+bar
+
+
+
+
+
+Q4)In what order will the code be executed?
+ (function(){
+
+ 	console.log(1);
+ 	setTimeout(function(){console.log(2)},1000);
+ 	setTimeout(function(){console.log(3)},0);
+ 	console.log(4);
+ })();
+
+OUTPUT:
+1
+4
+3
+2
+why?-JS engine will first finish whatever is inside the function and then go to events.
+so 1 and 4 will be printed and then it will go to the setTimeout().JS will add the functions attached to
+the setTimeout() events to the event queue based ont hte nearest timer tick.Js will put the callback function
+of the second setTimeout() first because it sees a 0 as it's second arguments.
+
+EXAMPLE 2:
+(function(){
+
+ 	console.log(1);
+ 	setTimeout(function(){console.log(2)},1000);
+ 	setTimeout(function(){console.log(3)},2000);
+ 	console.log(4);
+ })();
+
+OUTPUT:
+1
+4
+2
+3
+
+
+Q5)write a function to check whether a string is palindrome in less than 80 characters
+
+ANS:
+function isPalindrome(str)
+ {   str=str.toLowerCase();
+ 	return(str===str.split('').reverse().join(''));
+ }
+ console.log(isPalindrome("Aka"));
+
+OUTPUT:
+true
+
+split('')-splits the string into an array of characters-['a','k','a'].Does not change the original string.
+reverse()-reverses the array-
+join-joins all the array elements into a single string
+
+
+Q6)Write a sum method which works properly when invoked using sum(2)(3)
+
+A6)
+
+function sum(x){
+    
+    if(arguments.length===2)
+        return arguments[0]+arguments[1];
+    else
+        return function(y){
+            return x+y;
+        }
+}
+console.log(sum(2)(3));
+OUTPUT:5
+JS checks if the number of argumetns passed is two.If not then it invokes the anonymous function using (3)
+and retursn the value.
+
+
+
+Q7)What will be the output when user clicks button 4?
+
+for(var i=0;i<5;i++)
+    {
+        var btn=document.createElement("button");//creates a button
+        btn.appendChild(document.createTextNode("button"+i));//adds text to the button
+        btn.addEventListener("click",function(){
+            console.log(i);
+        });
+        document.body.appendChild(btn);//attaches the button to the document body.
+    }
+
+A7) No matter what button the user clicks the output will always be 5.This is becasue of closure.
+Even the loop will end JS will save the last value of i which is 5.This is due to closure.The button click events
+will ot get triggerd unless the code in the GEC is over and that gets over when the loop ends.
+
+SOLUTION TO THE ABOVE :
+for(var i=0;i<5;i++)
+    {
+        var btn=document.createElement("button");
+        btn.appendChild(document.createTextNode("button"+i));
+         (function(i){//add an anonymous function and pass the current value of i
+             
+             btn.addEventListener("click",function(){
+                 console.log(i);
+             })
+             
+         })(i);
+        document.body.appendChild(btn);
+    }
+
+
+
+
+
+Q8)What is the output of the code below?
+
+var arr1="john".split('');
+var arr2=arr1.reverse();
+
+var arr3="jones".split('');
+arr2.push(arr3);
+
+console.log("array 1 length:"+arr1+" last="+arr1.slice(-1));
+console.log("array 2 length:"+arr2+" last="+arr2.slice(-1));
+
+
+A8)OUTPUT:
+array 1 length:n,h,o,j,j,o,n,e,s last=j,o,n,e,s
+
+array 2 length:n,h,o,j,j,o,n,e,s last=j,o,n,e,s
+
+The reason why both arr1 and arr2 are the same:
+
+1)calling the reverse() method on an array not returns an array in reverse order
+but it changes the order of the orginal array itself.
+
+2)The reverse() method returns a reference to the array itself so the new array will have a reference to the
+original array.So any changes in the new array will change the orginal array itself.
+
+slice(-1)..slices the array at the last element.
+
+
+
+Q9)WHAT ARE THE ADVANTAGES OF USING THE STRICT KEYWORD:
+
+1)it prevents accidental initalization of variables to global.eg
+
+(function(){
+ var a=b=3;
+
+})();
+
+console.log(a!=='undefined');
+console.log(b!=='undefined');
+
+OUTPUT: 
+false
+true   //this is because var a=b=3 equates to var a=b
+and b=3 where b is taken as a global variable.Using stric keyword prevents this and gives a uncaught reference
+error.
+
+
+2)eliminates 'this' coercion-without strict mode any reference of null or undefined using the this keyword is
+automatically coerced to global.Using strict throws an error in such a case.
+
+3)disallows duplicate property names in objects:
+var obj={
+foo:'bar',
+ foo:'baz'
+}
+
+
+
+
+Q10)WHAT IS THE OUTPUT OF THE FOLLOWING CODE?
+console.log(1 +  "2" + "2");
+console.log(1 +  +"2" + "2");
+console.log(1 +  -"1" + "2");
+console.log(+"1" +  "1" + "2");
+console.log( "A" - "B" + "2");
+console.log( "A" - "B" + 2);
+
+
+OUTPUT:
+"122"- JS sees a numeric value 1 is being concatenated to the string "2".It performs coercion and converts 1
+to a string and adds it to 2.
+
+"32"- JS sees that the first operation to be performed is +"2"The extra plus before 2 is treated as a unary 
+operator.So 2 is converted to a numeric number.Then it sees that the next operation is adding this to 1.so
+we get 3 which is then converted to a string and added to "2".So we get "32".
+
+"02"-same logic as above
+
+"112"-1 is converted to a numeric .However,it is again converted to a string for concatenation with "1".
+
+NaN2-A and B are not numbers so we cannot perform mathematical operations on them.So it returns NaN.
+
+NaN
+
+
+Q11)WHAT IS THE OUTPUT OF THE CODE BELOW?
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() { console.log(i); }, i * 1000 );
+}
+
+OUTPUT:
+5
+5
+5
+5
+5
+
+HOW CAN YOU CIRCUMVENT THE ABOVE PROBLEM USING CLOSURE?
+for(var i=0;i<5;i++)
+    {
+        (function(x){//closure
+            setTimeout(function(){
+                console.log(x);
+            },x*1000);
+            
+        })(i);
+    }
+
+OUTPUT:
+0
+1
+2
+3
+4
+
+Q12)WHAT IS THE OUTPUT OF THE CODE BELOW?
+var hero={
+      _name:'john Doe',
+      getSecretIdentity:function(){
+          
+          return this._name;
+      }
+}
+
+  var stoleSecretIdentity=hero.getSecretIdentity();
+
+
+
+console.log(stoleSecretIdentity());
+console.log(hero.getSecretIdentity());
+
+
+OUTPUT:
+undefined
+john doe
+
+
+The above code behaves this way because stolesecretIdentity extracts the method on the object hero which is
+now executed in a global context so 'this' refers to the window object and not the hero object.
+
+SOLUTION:
+var stoleSecretIdentity=hero.getSecretIdentity.bind(hero);

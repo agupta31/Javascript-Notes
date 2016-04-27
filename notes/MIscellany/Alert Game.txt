@@ -1,0 +1,33 @@
+do{
+
+   var input=prompt('are we there yet');
+   var str="";
+   var i=0;
+   var flag=0;
+
+  while(i<=input.length)
+  { 
+
+    if(i!=input.length && input[i]!==' ')
+       str+=input[i];
+     
+
+     else
+     {
+       if(str==='yes')
+        {
+          alert('yay,we finally made it!');
+          flag++;
+          break;
+        }
+        else
+          str="";
+     }
+     
+    i++;
+  }
+ 
+}while(flag===0);
+
+ 
+

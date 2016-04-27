@@ -1,0 +1,10 @@
+This event is triggered when the page is fully loaded and the DOM has been created.
+
+eg.
+
+function myFunction(){
+ alert("hello world");
+
+}
+
+window.onload=myFunction;

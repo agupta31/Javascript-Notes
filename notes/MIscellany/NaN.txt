@@ -1,0 +1,51 @@
+isNaN is to determine whether a value is NaN or not.
+
+NaN-a thing that we try to convert to a number but is just isn't a number.
+3%0-NaN
+
+
+EXAMPLE:
+
+Number("akash");
+
+OUTPUT:
+NaN
+
+Number(undefined)
+O/P-NaN
+
+
+
+FEW EXCEPTIONS:
+Number(null);
+O/P-0
+However,null will not coerce to 0 during equality comparision.
+
+ie. null==0 will return false as opposed to being true.So this is a anomalous behaviour.
+
+null<1 will return true!!!
+
+
+
+
+why use isNaN?
+we cannot use equality operators because they result in unusual behaviour.for eg:
+NaN ==NaN returns false; as well as NaN===NaN also returns false!!!
+
+so we use isNaN:
+examples:
+isNaN(NaN)-true;
+isNaN(undefined)-true;
+isNaN({})-true;
+isNaN(false)-false;
+isNaN(6)-false;
+isNaN(null)-false;
+
+TRICKY EXAMPLE:
+isNaN("akash");
+//this returns true-this is a false positive.
+This is because JS engine coerces akash into a number and tries to parse it as a number which
+fails.Therefore it returns true.
+
+isNaN("36")-will return false because js coerces it to a number and parses it as a number
+which in this case is a number so it returns false.

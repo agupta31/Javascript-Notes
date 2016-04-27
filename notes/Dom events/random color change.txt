@@ -1,0 +1,9 @@
+var colors=["red","orange","blue","yellow"];
+
+newColor.addEventListener("click",function(){
+
+for(var i=0;i<easyDiv.length;i++)
+{
+	easyDiv[i].style.background=rgb[Math.floor(Math.random()* rgb.length)];            
+}
+});

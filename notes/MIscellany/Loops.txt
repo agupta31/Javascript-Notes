@@ -1,0 +1,174 @@
+FOR LOOP:
+<script>
+for(var i=0;i<10;i++)
+     {
+     	document.write("hello akash"+" "+i+" <br/>");
+     }
+</script>  
+
+
+
+
+WHILE LOOP:
+ <script type="text/javascript"> 
+    var i=0;
+     while(i<5){
+     
+     	document.write("hello akash"+" "+i+" <br/>");
+     	    i++;
+     }  
+     
+   </script>
+
+
+
+DO WHILE:
+  <script type="text/javascript"> 
+    var i=0;
+     do{
+     	document.write(i+". hello akash " +"<br/>");
+     	i++;
+     }while(i<5);
+
+     
+   
+   </script>
+
+
+
+ARRAYS:
+ <script type="text/javascript"> 
+    var x= new Array(3,8,12,13,0);
+    for(i=0;i<x.length;i++)
+    {
+    	document.write(x[i]+" ");
+    }
+ 
+   </script>
+
+
+
+CHANGING THE LENGTH OF AN ARRAY:
+ <script type="text/javascript"> 
+    var x= new Array(3,8,12,13,0);
+    x.length=3;
+
+    for(i=0;i<x.length;i++)
+    	document.write(x[i]+" ");
+ 
+   </script>
+
+
+
+REVERSE AN ARRAY:
+<script type="text/javascript"> 
+    var x= new Array("akash","mark","joe");
+    x.reverse();
+
+    for(i=0;i<x.length;i++)
+    	document.write(x[i]+" ");
+ 
+   </script>
+
+
+TO INSERT NEW ELEMENT INTO THE ARRAY:
+<script type="text/javascript"> 
+    var x= new Array("akash","mark","joe");
+    x.push("alihandro","bagnan");
+
+    for(i=0;i<x.length;i++)
+    	document.write(x[i]+" ");
+ 
+   </script>
+OUTPUT:
+akash mark joe alihandro bagnan
+
+
+
+GUESSING A NUMBER GAME:
+var secretNum=4;
+ var i=0;
+  do{
+var num=prompt('guess a number');
+
+   if(num>secretNum)
+     alert('too high.Guess Again');
+   else if(num<secretNum)
+     alert('too low .Guess again');
+   else{
+      alert('Congrats.You got it rightThe number is '+Number(num));
+      break;
+       }
+
+   
+    i++; 
+  }while(i<3);
+
+
+
+
+
+WHILE LOOP GAME:
+
+//print all numbers between -10 and 19
+function printNum()
+{
+  var num=-10;
+   while(num<=19)
+   {
+    document.write(num+' ');
+    num++;
+   }
+}
+
+//print all even numbers between 10 and 40
+function printEvenNum()
+{
+  var num=10;
+
+  while(num<=40)
+  {
+      if(num%2===0)
+        document.write(num+' ');
+
+      num++;
+
+  }
+}
+
+//print all odd numbers between 300 and 333
+function printOddNumber()
+{
+  var num=300;
+   while(num<=333)
+   {
+     if(num%2!==0)
+        document.write(num+' ');
+
+      num++;
+   }
+
+}
+
+//print all numbers divisible by 5 and 3 between 5 and 50
+function printOther()
+{ 
+  var num=5;
+   while(num<=50)
+   {
+    if(num%5===0 && num%3===0)
+       document.write(num +' ');
+
+     num++;
+   }
+}
+
+
+printNum();
+document.write("<br/> <br/>");
+printEvenNum();
+document.write("<br/> <br/>");
+printOddNumber();
+document.write("<br/> <br/>");
+printOther();
+

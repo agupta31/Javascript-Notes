@@ -1,0 +1,148 @@
+function buildFunctions()
+{
+  var arr=[];
+
+    for(var i=0;i<3;i++)
+    {
+
+       arr.push( 
+
+        function(){
+         console.log(i);
+       }
+       )
+    }
+    return arr;
+}
+
+ var fs=buildFunctions();
+
+ fs[0]();
+ fs[1]();
+ fs[2]();
+
+OUTPUT:
+3
+3
+3
+
+HOW TO SOLVE THE ABOVE PROBLEM?
+immediately invoke the function inside the array:
+function buildFunctions2(){
+
+	var arr=[];
+
+	for(var i=0;i<3;i++)
+	{
+		arr.push(
+
+               (function(j){
+               	
+                 return function(){
+                 	console.log(j);
+                 }
+
+               })(i)
+			);
+			
+		
+	}
+	return arr;
+}
+
+var fs=buildFunctions2();
+
+fs[0]();
+fs[1]();
+fs[2]();
+
+OUTPUT:
+0
+1
+2
+
+
+
+CLOSURE ADVANTAGE:
+function ethinicity(ethCty)
+{  
+	
+	return function(){
+		 if(ethCty==='brown')
+		 	 console.log('you are from india');
+		  else if(ethCty==='white')
+		  	  console.log('you are a foreigner');
+	    }
+ }
+   
+
+
+
+ var brownSkin=ethinicity('brown');
+ var whiteSkin=ethinicity('white');
+
+ brownSkin();
+ whiteSkin();
+
+ OUTPUT:
+you are form india
+you are a foreigner
+
+
+ANOTHER WAY OF INVOKING THE ABOVE FUNCTION:
+function ethnicity(skinTone)
+{
+    
+      return function(){
+           if(skinTone==='brown')
+               console.log("indian");
+           else if(skinTone==='pale white')
+               console.log("irish");
+          else
+              console.log("chinese");
+      }
+}
+
+ethnicity('brown')();
+
+
+FACTORY FUNCTIONS:using closures to make function factories
+
+function makeGreeting(language){
+
+      language=language || 'bangla'
+	return function(firstname,lastname){
+		 if(language==='en')
+		 	console.log("hello "+firstname+" "+lastname);
+
+		 else if(language==='es')
+		 	console.log("hola "+firstname+" "+lastname);
+		 else
+		 	console.log('amar sonar bangla');
+		 
+	}
+}
+
+var englishGreet=makeGreeting('en');
+var spanishGreet=makeGreeting('es');
+
+englishGreet('akash','gupta');
+spanishGreet('badhrel','bakrel');
+
+OUTPUT:
+hello akash gupta
+hola badhrel bakrel
+
+
+
+ANOTHER EXAMPLE OF CLOSURE:
+ var fun=function(x){
+     
+     var k=function(y){//EVEN THOUGH FUNCTION fun() is over function k still has the value of x.
+          console.log(x+y);
+     }(2);
+     return 0;
+ }(3);
+
+OUTPUT:
+5

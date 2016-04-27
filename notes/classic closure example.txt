@@ -1,0 +1,20 @@
+
+//this shows a classic examples of closure
+//js treats setTimeout as a browser event and keeps its timing in a queue.
+//as soon as the time os over it listen for any callback functions.If there is
+// one it gets executed.
+function sayHiLater(){
+
+	 var greeting="hello";
+	 //we are pasing a function as an argument.This shows the use of first class 
+	 //functions in JS.This function is created on the fly so we are using
+	 //function expressions here.Finally even after sayHiLater is over and 3 secs
+	 //have passed setTimeout still has access to the variable greeting.This shows
+	 //the use of closure.
+	   setTimeout(function(){
+	   	 console.log(greeting);
+	   },3000);
+
+}
+
+sayHiLater();

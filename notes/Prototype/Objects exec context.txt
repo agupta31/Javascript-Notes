@@ -1,0 +1,47 @@
+objects dont create an execution context so whenever u are using a function inside
+an object as a name value pair and referencing a property of the object you shoudl
+use this to inform the js engine that you are pointing to the property inside this
+object otherwise js will search for the variable in the global exec context.If it's
+not there will give an error.
+
+examples:
+var wrestler={
+	  firstname:'undertaker',
+	  lastname:'deadman',
+	  getFullname:function(){
+	  	console.log(firstname);
+	  }
+}
+wrestler.getFullname();
+
+OUTPUT:
+firstname is not defined
+
+
+
+example 2:
+var firstname='gadhrel';
+var wrestler={
+	  firstname:'undertaker',
+	  lastname:'deadman',
+	  getFullname:function(){
+	  	console.log(firstname);
+	  }
+}
+wrestler.getFullname();
+OUTPUT:
+gadhrel
+
+
+example 3:use this
+
+var wrestler={
+	  firstname:'undertaker',
+	  lastname:'deadman',
+	  getFullname:function(){
+	  	console.log(this.firstname);
+	  }
+}
+wrestler.getFullname();
+output:
+undertaker

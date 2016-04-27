@@ -1,0 +1,10 @@
+SCRIPT:
+
+function init(){
+  alert("hey there this is to demonstrate the use of setTimeout");
+
+}
+
+setTimeout(init,3000);//calls init after 3s from the time the page loaded
+setInterval(init,2000);//calls init after evry 3s for an infinite amount of time
+ 

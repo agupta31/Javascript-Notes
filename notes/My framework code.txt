@@ -1,0 +1,102 @@
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  
+    
+
+</head>
+
+<body>   
+     <div id="container">
+
+	 Firstname : <input type="text" id="frstName" name="firstname"><br/> <br/>
+     Lastname :<input type="text" id="lstName" name="lastname"><br/><br/>
+     Language:<br/>
+           <input type="radio" name="language" value="english" class="lang">English
+           <input type="radio" name="language" value="spanish" class="lang">Spanish <br/> <br/>
+      <button id="clickBtn">Click Here</button>
+      <h1></h1>      
+
+  </div>
+     
+         <script type="text/javascript" src="jquery-2.2.1.js"></script>
+         <script type="text/javascript" src="Greetr.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+      
+       
+</body>
+  
+</html>
+
+
+GREET.JS-my framework
+
+//a IIFE function which accepts the window object and a jQuery object
+(function(global,jqryObj)                          
+{
+   
+   var greetr=function(firstname,lastname,language){
+
+   	   return new greetr.init(firstname,lastname,language);
+   }
+    var supportedLanguages=['en','es'];
+
+    var greetings={
+    	 en:"hello",
+    	 es:"hola"
+    };
+
+  
+     greetr.prototype={
+
+            validate:function(){
+           	 if(supportedLanguages.indexOf(this.language)===-1)
+           	 	throw "invalid language selected";
+
+           },
+
+            displayGreeting:function(){
+            	alert(greetings[this.language]+' '+this.firstname+' '+this.lastname);
+                return this;
+            	
+            },
+            setLanguage:function(lang){
+              this.language=lang;
+              greetings[this.language] ="hello in german";
+              return this;
+
+            },
+           
+     };
+
+    greetr.init=function(firstname,lastname,language){
+	var self=this;
+	self.firstname=firstname ||"";
+	self.lastname=lastname || "";
+	self.language=language || "en";
+}
+ //we want any object created using greetr.init point to greetr.prototype 
+ //as its prototype becasue it looks cleaner so we are doing this
+  greetr.init.prototype=greetr.prototype;
+//on the global object greetr and G$ will point to the greetr above
+
+ global.greetr=global.G$=greetr;
+  
+
+})(window,jQuery);
+
+
+
+APP.js:
+
+var g=G$('akash','gupta','es');
+ console.log(g);
+
+ g.displayGreeting().setLanguage('ger').displayGreeting().htmlGreeting();
+
+
+

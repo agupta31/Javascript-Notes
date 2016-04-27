@@ -1,0 +1,19 @@
+var obj={
+     
+   
+	fullname:function(){
+		console.log('hello');
+		return this;//this returns the current object which is obj here.
+	},
+
+	halfname:function(){
+		console.log("what up bro?");
+		return this;
+	},
+
+	prabhuJi:function(){
+		console.log('sawaaaalll!!!');
+	}
+};
+
+obj.fullname().halfname().prabhuJi();

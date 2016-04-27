@@ -1,0 +1,6 @@
+function sizeElement(){
+  document.getElementById("demo").innerHTML+="I WILL HOLY MOTHER OF GOD";
+
+}
+
+window.onresize=sizeElement;//evry time you resize your browser window the text gets added

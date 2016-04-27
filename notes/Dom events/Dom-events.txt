@@ -1,0 +1,51 @@
+//addEventListener
+
+HTML:
+<!doctype html>
+
+<html lang="en">
+<head>
+
+   <title>This is a javascript page</title>
+  <link rel="stylesheet" type="text/css" href="Mystyle.css"> 
+  
+
+</head>
+
+<body>
+         <h1>Welcome to my DOM demo</h1>
+            <button id="myButtn">Click</button>
+
+        <script type="text/javascript" src="script.js"></script>
+       
+</body>
+  
+</html>
+
+
+SCRIPT:
+var bttn=document.querySelector("#myButtn");
+bttn.addEventListener("click",function(){
+
+	alert("hi you clicked me!");
+});
+
+//code for same html
+var tag=document.querySelector("#myButtn");
+
+tag.addEventListener("click",function(){
+	document.querySelector("h1").textContent="I am the greatest";
+});
+
+//
+var tag=document.querySelector("#myButtn");
+
+tag.addEventListener("click",function(){//adding two events to the same element.This one gets executed first
+                                        as it was kept in the queue first.
+	alert("h1 was clicked");
+	
+});
+tag.addEventListener("click",function(){
+	
+	document.querySelector("h1").style.color="orange";
+});

@@ -1,0 +1,36 @@
+
+//using pure prototypal inheritance
+var person={
+	name:"john",
+	age:23,
+	city:"kolkata",
+	getFullDetails:function(){
+		console.log(this.name+" "+this.age+" "+this.city);
+	}
+}
+
+var john=Object.create(person);
+console.log(john);
+john.getFullDetails();
+john.name="doe";
+console.log(john.name);
+
+
+//using function constructors to implements inheritance.
+
+function animal(firstname){
+	this.name=firstname;
+	this.speed="50kmph";
+	this.getAttribute=function(){
+		console.log(this.name+" "+this.speed);
+
+	}
+}
+
+var dog=new animal("golden ");
+
+
+//using keyword proto:
+var john.__proto__=person;
+
+

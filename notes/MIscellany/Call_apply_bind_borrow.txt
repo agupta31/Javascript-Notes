@@ -1,0 +1,76 @@
+//CALL,APPLY AND BIND
+EXAMPLE 1:
+
+var person={
+	firstname:"akash",
+	lastname:"gupta",
+	getFullName:function(){
+		console.log("logged:"+this.firstname+" "+this.lastname);
+	}
+}
+
+var student=function(var1,var2){
+	this.getFullName();
+	console.log(this.firstname);
+	console.log(var1+" "+var2);
+}
+var callFunc=student.bind(person,12,13);//binding(this points to person object.Howver,bind creates a new copy
+                                    of function student.
+callFunc();//u then invoke the function callFunc which points to student function
+
+
+OUTPUT:
+akash gupta
+akash
+
+12 13
+
+
+
+student.call(person,'en','es');//same as bind except that it does not create a new copy of logName
+
+student.apply(person,['en','es']);//same as call except that it cannot pass single valued arguments.It can only
+                                  pass the arguments as a list(array)
+
+
+
+EXAMPLE 2:
+var person={
+	firstname:"akash",
+	lastname:"gupta",
+	getFullName:function(){
+		console.log(this.firstname+" "+this.lastname);
+	}
+}
+ 
+
+var employee={
+  company:"bloomberg",
+   student:function(var1,var2){
+	this.getFullName();
+	console.log(this.firstname);
+	console.log(var1+" "+var2);
+}
+
+}
+employee.student.call(person,12,13);
+
+OUTPUT:
+akash gupta
+akash
+12 13
+
+
+
+
+FUNCTION CURRYING:
+function multiply(a,b)
+{
+	return a*b;
+}
+
+var multiplyByTwo= multiply.bind(this,2,13);//presets the value of first parameter 'a' as 2.
+ console.log(multiplyByTwo());
+
+OUTPUT:
+26

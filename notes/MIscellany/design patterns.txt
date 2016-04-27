@@ -1,0 +1,27 @@
+FUNCTION OVERLOADING:
+ 
+function greet(name,age,lang){
+
+      lang=lang||'en';
+
+      if(lang==='en')
+        console.log("hello "+name+" "+age);
+       else if(lang==='es')
+        console.log("hola"+name+" "+age);
+
+}
+
+function greetEnglish(){
+   greet("akash",11,'en'));
+}
+
+function greetSpanish(){
+    greet("alihandro",33,'es');
+}
+
+greetSpanish();
+greetEnglish();
+
+OUTPUT:
+hola alihandro 33
+hello akash 11

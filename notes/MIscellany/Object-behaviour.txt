@@ -1,0 +1,30 @@
+var fiat={
+       make:"fiat",
+       model:"500",
+       year:1957,
+       startEngine:false,
+
+       start:function(){ //behaviour of the car object
+         startEngine=true;
+       },
+
+       stop:function(){
+        startEngine=false;
+       },
+
+       drive:function(){
+         if(startEngine)
+           console.log("zoom zoom");
+         else
+          console.log("engine not yet started");
+       }
+
+}
+fiat.start();
+fiat.drive();
+fiat.stop();
+fiat.drive();
+
+OUTPUT:
+zoom zoom
+engine not started yet

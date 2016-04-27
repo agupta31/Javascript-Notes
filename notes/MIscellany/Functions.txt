@@ -1,0 +1,122 @@
+//function statement
+function greet(name){
+  console.log(name);
+}
+greet('alihandro');
+
+//function expression created on the fly
+var greetFunc=function(name)//anonymous function
+{ 
+ console.log(name);
+}
+greetFunc('akash');
+
+
+OUTPUT:
+alihandro
+akash
+
+//immediately invoked function expression
+var greetFunc=function(name)
+{ 
+ console.log(name);
+}('akash');//invoking the function here itself
+
+OUTPUT:
+akash
+
+var greetFunc=function(name)
+{ 
+   return "hello "+name;
+}('akash');
+
+console.log(greetFunc);
+
+OUTPUT:
+akash
+
+
+//classic example of IIFE
+(function(name)
+{
+  console.log("hola IIFE "+name);
+}('bandhrel'));
+
+
+OUTPUT:
+hola IIFE bandhrel
+
+
+A FUNCTION RETURNING ANOTHER FUNCTION:
+
+
+function display()
+{
+	 return function(){
+	 	console.log("what up brother?");
+	 }
+}
+
+var x=display();
+x();
+
+OUTPUT:
+what up brother?
+
+
+
+
+
+ANOTHER EXAMPLE"
+var employee;
+
+function createEmployee(id,name)
+{
+	this.id=id;
+	this.name=name;
+}
+
+function getEmployee(state)
+{
+	 employee=new createEmployee('101','akash');
+	 employee.state=state;
+	 employee.sayHello=function(){
+	 	console.log("hi from: "+employee.name+" "+employee.state);
+	 }
+	 employee.sayHello();
+
+	
+}
+
+getEmployee('nj');
+
+OUTPUT:
+hi akash nj
+
+
+
+
+EXAMPLE:
+function getEmployee()
+{      
+        var employee={
+        name:'akash',
+        age:21,
+        state:'nj',
+    }
+	    sayHello=function(){
+	 	console.log("hi from: "+employee.name+" "+employee.state+" "+employee.age);
+	 }
+	 sayHello();
+
+	
+}
+
+getEmployee();
+
+hi from akash nj 21
+
+
+
+
+

@@ -1,0 +1,57 @@
+
+CASE:1
+var greeting='hola';
+function x()
+{
+   greeting='hello';
+   console.log(greeting);
+}
+ 
+ x();
+console.log(greeting);
+OUTPUT:
+hello
+hello
+this is because we are replacing greeting in the function.
+
+
+CASE 2:
+ var greeting='hola';
+function x()
+{
+   var greeting='hello';
+   console.log(greeting);
+}
+ 
+ x();
+console.log(greeting);
+OUTPUT:
+hello
+hola
+This is because inside the fuunction we are creating a new variable called greeting which will be present in
+the functions own execution stack.
+
+
+
+
+CASE 3:Shadowing global variables
+var balance=10500;
+var camerOn=true;
+
+function steal(balance,amount)//the balance parameter shadows the global variable.Th js engine add var before
+                             it when it sees it so it becomes local to the function even though the name is 
+                             same.So any change in balance here won't have any effect on global balance.As,
+                             a result the thief won;t be able to steal anything.
+{ 
+    camerOn=false;
+    if(amount<balance)
+      balance=balance-amount;
+
+    return amount;
+    camerOn=true;
+}
+
+var amount=steal(balance,1250);
+console.log("criminal stole:"+amount);
+console.log(balance);//balance will still be 10500.
+

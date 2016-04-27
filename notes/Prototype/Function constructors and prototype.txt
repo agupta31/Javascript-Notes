@@ -1,0 +1,82 @@
+function person(firstname,lastname){
+	console.log(this);
+	this.firstname=firstname;
+	this.lastname=lastname;
+	
+	console.log("function is invoked");
+}
+
+person.prototype.getFullName = function(age) {
+	this.age=age;
+};
+
+var k=new person("akash","gupta");
+var x=new person("utpal","gupta");
+console.log(k);
+console.log(x);
+k.getFullName(21);
+x.getFullName(55);
+
+OUTPUT:
+object{firstname:akash,lastname:gupta,getFullname(),age:21}
+object{firstname:utpal,lastname:gupta,getFullname(),age:55}
+
+
+Explanation:
+every function in JS has a property called prototype which is not it's prototype
+object but it is the prototype of the object created using that function as a 
+constructor.
+so, person.prototype is the prototype of both object k and x.So we can access
+any property using that prototype.
+
+
+
+
+EXAMPLE 2:
+function person(firstname,lastname){
+	console.log(this);
+	this.firstname=firstname;
+	this.lastname=lastname;
+	
+	console.log("function is invoked");
+}
+
+person.prototype.getAge= function(age) {
+	this.age=age;
+};
+
+
+person.prototype.getFormalFullName=function(){
+	return this.firstname;
+}
+var k=new person("akash","gupta");
+var x=new person("utpal","gupta");
+k.firstname="bagnan";
+k.getFullName(21);
+x.getFullName(55);
+console.log(k.getFormalFullName());
+
+OUTPUT:
+bagnan
+
+
+EXPLANATION:
+When getFormalFullName is called on object k the JS engine searches for it inside
+object k.It doesn't find it and then goes down the prototype chain and sees that 
+it is in its prototype and therefore prints it.
+
+
+
+
+BUILT IN FUNCTION CONSTRUCTORS AND PROTOTYPE:
+var a=new String("john");
+//making an object a by calling the string function as a 
+                           constructor
+String.prototype.includes("o");
+the method inlcudes will be available to a as it is
+                                located inside its protoype String.prototype
+false
+
+a.includes("o");
+
+true

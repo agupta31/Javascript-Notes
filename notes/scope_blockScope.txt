@@ -1,0 +1,20 @@
+SCOPE:
+JS does not provide block scoping.Everything is function scoping.
+eq:
+
+
+var scope="global";
+
+function f(){
+  console.log(scope);
+  var scope="local";
+  console.log(scope);
+}
+
+f();
+OUTPUT:
+udnefined
+local
+
+this is because the gloabl scope variable has been overrridden by the local scope variable.So when we try to print
+scope in the first line it does not take the gloabl scope but the local scope which hasn't been assisgned a value yet.
