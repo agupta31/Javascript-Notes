@@ -8,6 +8,37 @@ then it goes to it's protoype.
 
 objects can share the same protoype.
 
+var person={
+	   name:'akash',
+	   age:21,
+	   getFullDetails:function(){
+
+	   	    return this.name+" "+this.age;
+	   }
+}
+
+var john={
+	   name:"john doe"
+};
+
+var jane={
+	   name:"jane doe",
+	   age:23
+};
+//two different objects sharing the same prototype
+john.__proto__=person;
+jane.__proto__=person;
+
+console.log(john.getFullDetails());        {john object} {jane object}
+                                                    \      /
+                                                     {proto}
+console.log(jane.getFullDetails());                    |
+                                                       | 
+                                                     {person}
+OUTPUT:
+john doe 21
+jane doe 23
+
 The bottom of a the prototype chain is always Object{}
 
 eq:
@@ -78,12 +109,12 @@ var person={
 	   }
 }
 
-//this creates an empty john object whose prototype property points to 
-//person object
+//this creates an empty object whose proto property points to the person object.
+
 var john=Object.create(person);
   console.log(john);
 
-  //you can now overrride the properties inside the prototype
+  //you can override the properties 
   john.firstname='john';
   john.greet=function(){
   	   return this.firstname+" "+this.lastname;
@@ -92,7 +123,23 @@ var john=Object.create(person);
 
 OUTPUT:
 Object {}
+__proto__
+:
+Object
+age
+:
+21
+getDetails
+:
+()
+name
+:
+"akash"
+__proto__
+:
+Object
 
+--------------
 john gupta
 
 
@@ -104,11 +151,14 @@ if(!Object.create){
   Object.create=function(obj){
 
   	    if(arguments.length>1){
-           throw new error("object.create impplementation only accepts"
+           throw new error("object.create implementation only accepts"
            +" the first parameter");
   	    }
+        //creates an empty object.
   	    function F(){}
+     //sets the prototype of this empty object to the object being passed
   	    F.prototype=obj;
+    //returns this empty object
   	    return new F();
   }
     

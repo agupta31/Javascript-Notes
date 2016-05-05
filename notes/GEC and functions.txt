@@ -1,0 +1,16 @@
+var age=25;
+var person={
+         name:"akash",
+         age:21,
+         getDetails:function(){
+         	//if you don't specify this then js looks for age variable inside this function.
+         	//If it doesn't find it inside the function then it looks for it in its outer 
+         	//lexical environment which in this case is the GEC.
+         	  return this.name+" "+age;
+         }
+}  
+
+console.log(person.getDetails());
+
+OUTPUT:
+akash 25
